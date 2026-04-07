@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sectors — Nayu Technologies</title>
+  <meta name="description" content="Deep AI expertise in banking, insurance, payments, wealth management, and pensions."/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .sector-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0.5rem;
+    }
+    .sector-tab {
+      padding: 0.6rem 1.25rem;
+      border-radius: 10px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      background: transparent;
+      font-family: var(--font-body);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sector-tab:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+    .sector-tab.active { color: var(--white); background: rgba(59,130,246,0.15); }
+
+    .sector-panel { display: none; }
+    .sector-panel.active { display: block; }
+
+    .sector-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .sector-intro { font-size: 1rem; color: var(--text-dim); line-height: 1.75; margin-top: 1rem; }
+
+    .use-cases {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .use-case {
+      padding: 1rem 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.83rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.2s;
+    }
+    .use-case:hover { border-color: var(--border-hover); color: var(--text); }
+    .use-case::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .outcomes-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+    .outcomes-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .outcome-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .outcome-item:last-child { border-bottom: none; }
+    .outcome-label { font-size: 0.85rem; color: var(--text-dim); }
+    .outcome-value { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; }
+    .outcome-value.green { color: #34d399; }
+    .outcome-value.blue { color: #93c5fd; }
+    .outcome-value.cyan { color: #67e8f9; }
+
+    .sector-cta-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .sector-layout { grid-template-columns: 1fr; }
+      .use-cases { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .sector-tabs { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="logo-hex">N</div>
+      NayuTech
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="training.html">AI Training</a></li>
+      <li><a href="sectors.html" class="active">Sectors</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Get Started →</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="services.html">Services</a>
+    <a href="training.html">AI Training</a>
+    <a href="sectors.html">Sectors</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav-cta">Get Started →</a>
+  </div>
+
+  <div class="page">
+    <div class="page-hero">
+      <div class="section-label" style="justify-content:center;">Sector Portfolio</div>
+      <h1>Deep Expertise in <em style="font-style:normal;background:linear-gradient(135deg,#93c5fd,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">High-Stakes</em> Industries</h1>
+      <p>We combine AI expertise with deep domain knowledge to solve the complex, regulated, data-intensive problems unique to financial services and beyond.</p>
+    </div>
+
+    <section>
+      <div class="sector-tabs reveal" id="sectorTabs">
+        <button class="sector-tab active" data-panel="banking">🏦 Banking</button>
+        <button class="sector-tab" data-panel="insurance">🛡️ Insurance</button>
+        <button class="sector-tab" data-panel="payments">💳 Payments & Fintech</button>
+        <button class="sector-tab" data-panel="wealth">📈 Wealth & Capital</button>
+        <button class="sector-tab" data-panel="pensions">💼 Pensions & Benefits</button>
+      </div>
+
+      <!-- Banking -->
+      <div class="sector-panel active reveal" id="panel-banking">
+        <div class="sector-layout">
+          <div>
+            <div class="section-label">Banking & Retail Finance</div>
+            <h2 class="section-title">AI-Powered Banking <em>at Scale</em></h2>
+            <p class="sector-intro">We help banks and credit unions accelerate every part of the customer and operations lifecycle — from intelligent onboarding to real-time fraud detection. Our solutions are built for compliance-heavy environments and integrate seamlessly with core banking systems.</p>
+            <div class="use-cases">
+              <div class="use-case">Real-time fraud & AML detection</div>
+              <div class="use-case">AI credit scoring & decisioning</div>
+              <div class="use-case">Next best action personalization</div>
+              <div class="use-case">Regulatory reporting (IFRS9, Basel)</div>
+              <div class="use-case">AI contact center for retail banking</div>
+              <div class="use-case">KYC/KYB document automation</div>
+              <div class="use-case">Collections intelligence & triage</div>
+              <div class="use-case">Intelligent mortgage origination</div>
+            </div>
+            <div class="sector-cta-row">
+              <a href="contact.html" class="btn btn-primary">Talk to a Banking AI Expert →</a>
+            </div>
+          </div>
+          <div>
+            <div class="outcomes-panel">
+              <div class="outcomes-title">Typical Client Outcomes</div>
+              <div class="outcome-item">
+                <span class="outcome-label">Fraud Detection Improvement</span>
+                <span class="outcome-value green">↑ 40%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Credit Decision Time</span>
+                <span class="outcome-value blue">↓ 70%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Customer CSAT</span>
+                <span class="outcome-value green">↑ 28%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Compliance Cost Reduction</span>
+                <span class="outcome-value blue">↓ 35%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Operational FTE Savings</span>
+                <span class="outcome-value cyan">30–50%</span>
+              </div>
+            </div>
+            <div style="margin-top:1rem;padding:1.25rem;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.1);border-radius:14px;">
+              <div style="font-size:0.75rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Clients Include</div>
+              <div style="font-size:0.9rem;color:var(--text-dim);">Big 5 Banks · Regional Banks · Credit Unions · Digital Challengers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insurance -->
+      <div class="sector-panel reveal" id="panel-insurance">
+        <div class="sector-layout">
+          <div>
+            <div class="section-label">Insurance</div>
+            <h2 class="section-title">Smarter Underwriting <em>& Claims</em></h2>
+            <p class="sector-intro">Transform the insurance value chain with AI that accelerates underwriting decisions, automates claims processing, and reduces loss ratios. We work across P&C, life, and specialty lines.</p>
+            <div class="use-cases">
+              <div class="use-case">AI underwriting & risk scoring</div>
+              <div class="use-case">Intelligent claims triage & STP</div>
+              <div class="use-case">Document AI for policy & claims</div>
+              <div class="use-case">Fraud detection & anomaly models</div>
+              <div class="use-case">Customer self-service AI portals</div>
+              <div class="use-case">Actuarial model augmentation</div>
+              <div class="use-case">Agent productivity tools</div>
+              <div class="use-case">Loss ratio optimization</div>
+            </div>
+            <div class="sector-cta-row">
+              <a href="contact.html" class="btn btn-primary">Talk to an Insurance AI Expert →</a>
+            </div>
+          </div>
+          <div>
+            <div class="outcomes-panel">
+              <div class="outcomes-title">Typical Client Outcomes</div>
+              <div class="outcome-item">
+                <span class="outcome-label">Underwriting Speed</span>
+                <span class="outcome-value green">↑ 60%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Claims Processing Time</span>
+                <span class="outcome-value blue">↓ 50%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Straight-Through Processing Rate</span>
+                <span class="outcome-value cyan">Up to 80%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Fraud Catch Rate</span>
+                <span class="outcome-value green">↑ 35%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payments -->
+      <div class="sector-panel reveal" id="panel-payments">
+        <div class="sector-layout">
+          <div>
+            <div class="section-label">Payments & Fintech</div>
+            <h2 class="section-title">Intelligent <em>Payments Infrastructure</em></h2>
+            <p class="sector-intro">From real-time payments to embedded finance — we help payment companies build the AI layer that powers next-generation financial experiences with sub-millisecond fraud decisions and seamless compliance.</p>
+            <div class="use-cases">
+              <div class="use-case">Real-time transaction fraud ML</div>
+              <div class="use-case">Automated reconciliation & exceptions</div>
+              <div class="use-case">AML transaction monitoring AI</div>
+              <div class="use-case">Smart routing optimization</div>
+              <div class="use-case">Open banking API & embedded finance</div>
+              <div class="use-case">Chargeback intelligence & automation</div>
+              <div class="use-case">Merchant risk scoring</div>
+              <div class="use-case">Dispute resolution automation</div>
+            </div>
+            <div class="sector-cta-row">
+              <a href="contact.html" class="btn btn-primary">Talk to a Payments AI Expert →</a>
+            </div>
+          </div>
+          <div>
+            <div class="outcomes-panel">
+              <div class="outcomes-title">Typical Client Outcomes</div>
+              <div class="outcome-item">
+                <span class="outcome-label">False Positive Reduction</span>
+                <span class="outcome-value blue">↓ 45%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Transaction Approval Rate</span>
+                <span class="outcome-value green">↑ 12%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Reconciliation Effort</span>
+                <span class="outcome-value blue">↓ 80%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">AML Alert Quality</span>
+                <span class="outcome-value green">↑ 55%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wealth -->
+      <div class="sector-panel reveal" id="panel-wealth">
+        <div class="sector-layout">
+          <div>
+            <div class="section-label">Wealth & Capital Markets</div>
+            <h2 class="section-title">AI-Driven <em>Investment Intelligence</em></h2>
+            <p class="sector-intro">Unlock alpha and operational efficiency with AI across the investment lifecycle — from research generation to regulatory reporting. We serve wealth managers, asset managers, and capital markets firms.</p>
+            <div class="use-cases">
+              <div class="use-case">Portfolio analytics & AI advisors</div>
+              <div class="use-case">Trade surveillance & market abuse detection</div>
+              <div class="use-case">AI-generated investment research</div>
+              <div class="use-case">Client segmentation & CLV models</div>
+              <div class="use-case">Regulatory & compliance AI</div>
+              <div class="use-case">ESG scoring & integration</div>
+              <div class="use-case">Suitability & risk profiling AI</div>
+              <div class="use-case">Operations automation</div>
+            </div>
+            <div class="sector-cta-row">
+              <a href="contact.html" class="btn btn-primary">Talk to a Capital Markets AI Expert →</a>
+            </div>
+          </div>
+          <div>
+            <div class="outcomes-panel">
+              <div class="outcomes-title">Typical Client Outcomes</div>
+              <div class="outcome-item">
+                <span class="outcome-label">Research Production Speed</span>
+                <span class="outcome-value green">↑ 5x</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Compliance Reporting Effort</span>
+                <span class="outcome-value blue">↓ 60%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Client Retention via AI Insights</span>
+                <span class="outcome-value green">↑ 18%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Trade Surveillance False Positives</span>
+                <span class="outcome-value blue">↓ 40%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pensions -->
+      <div class="sector-panel reveal" id="panel-pensions">
+        <div class="sector-layout">
+          <div>
+            <div class="section-label">Pensions & Benefits</div>
+            <h2 class="section-title">Modernizing <em>Pension Administration</em></h2>
+            <p class="sector-intro">Help pension funds and benefit administrators deliver better member outcomes with AI-powered engagement and process automation — while meeting stringent regulatory requirements.</p>
+            <div class="use-cases">
+              <div class="use-case">Member chatbots & self-service AI</div>
+              <div class="use-case">Actuarial data & AI modeling</div>
+              <div class="use-case">Benefits administration automation</div>
+              <div class="use-case">Document digitization & processing</div>
+              <div class="use-case">Regulatory reporting automation</div>
+              <div class="use-case">Member engagement analytics</div>
+              <div class="use-case">Fraud detection & overpayment</div>
+              <div class="use-case">DC/DB plan optimization AI</div>
+            </div>
+            <div class="sector-cta-row">
+              <a href="contact.html" class="btn btn-primary">Talk to a Pensions AI Expert →</a>
+            </div>
+          </div>
+          <div>
+            <div class="outcomes-panel">
+              <div class="outcomes-title">Typical Client Outcomes</div>
+              <div class="outcome-item">
+                <span class="outcome-label">Member Self-Service Rate</span>
+                <span class="outcome-value green">↑ 55%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Admin Processing Time</span>
+                <span class="outcome-value blue">↓ 65%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Document Processing Accuracy</span>
+                <span class="outcome-value cyan">99.2%</span>
+              </div>
+              <div class="outcome-item">
+                <span class="outcome-label">Reporting Effort Reduction</span>
+                <span class="outcome-value blue">↓ 50%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-banner" style="padding:2rem 2rem 4rem;">
+      <div class="cta-inner reveal">
+        <h2>Ready to Transform Your <em>Industry?</em></h2>
+        <p>Our sector specialists will assess your AI opportunities and recommend a tailored approach.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-primary">Book a Sector Deep-Dive →</a>
+          <a href="services.html" class="btn btn-outline">Explore Our Services</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="display:inline-flex;"><div class="logo-hex">N</div>NayuTech</a>
+          <p>Nayu Technologies Inc. is an AI & automation consulting firm helping enterprises harness the power of intelligent technology.</p>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/company/nayutech" class="social-link" target="_blank">in</a>
+            <a href="mailto:info@nayutechnologies.com" class="social-link">@</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="services.html">Generative AI</a></li>
+            <li><a href="services.html">Intelligent Automation</a></li>
+            <li><a href="services.html">Digital Transformation</a></li>
+            <li><a href="services.html">Cloud & Security</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="training.html">AI Training</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Office</h5>
+          <div class="footer-address">Toronto, Ontario, Canada<br>info@nayutechnologies.com</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Nayu Technologies Inc. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="contact.html">Privacy</a>
+          <a href="contact.html">Terms</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    // Sector tabs
+    const tabs = document.querySelectorAll('.sector-tab');
+    const panels = document.querySelectorAll('.sector-panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+      });
+    });
+
+    // Handle hash nav e.g. sectors.html#banking
+    const hash = window.location.hash.replace('#','');
+    if (hash) {
+      const matchTab = document.querySelector(`[data-panel="${hash}"]`);
+      if (matchTab) matchTab.click();
+    }
+  </script>
+</body>
+</html>
