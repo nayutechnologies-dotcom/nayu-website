@@ -1,371 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact — Nayu Technologies</title>
-  <meta name="description" content="Get in touch with Nayu Technologies. Book a free AI consultation or enroll your team in AI training."/>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Nayu Technologies Inc.</title>
+  <meta name="description" content="Contact Nayu Technologies for AI consulting, enterprise IT services, and digital transformation strategy. Book a discovery call with your trusted AI partner." />
+  <link rel="canonical" href="https://www.nayutechnologies.com/contact-us" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.nayutechnologies.com/contact-us" />
+  <meta property="og:title" content="Contact — Nayu Technologies Inc." />
+  <meta property="og:description" content="Contact Nayu Technologies for AI consulting, enterprise IT services, and digital transformation strategy." />
+  <meta property="og:image" content="https://www.nayutechnologies.com/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact — Nayu Technologies Inc." />
+  <meta name="twitter:description" content="Contact Nayu Technologies for AI consulting, enterprise IT services, and digital transformation strategy." />
+  <meta name="twitter:image" content="https://www.nayutechnologies.com/assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2300d4ff'/><text y='.9em' font-size='70' x='10'>N</text></svg>" />
   <style>
-    .contact-layout {
+    .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1.4fr;
       gap: 4rem;
       align-items: start;
       margin-top: 3rem;
     }
-
-    .contact-info h2 {
-      font-family: var(--font-display);
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-    }
-    .contact-info p {
-      color: var(--text-dim);
-      font-size: 0.9rem;
-      line-height: 1.75;
-      margin-bottom: 2rem;
-    }
-
-    .info-items { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
-    .info-item {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      padding: 1rem 1.25rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-    }
-    .info-icon { font-size: 1.1rem; margin-top: 1px; }
-    .info-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700; }
-    .info-value { font-size: 0.875rem; color: var(--text-dim); margin-top: 0.15rem; }
-
-    .contact-reasons { display: flex; flex-direction: column; gap: 0.6rem; }
-    .contact-reason {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.85rem;
-      color: var(--text-dim);
-    }
-    .contact-reason::before {
-      content: '';
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: rgba(59,130,246,0.1);
-      border: 1px solid rgba(59,130,246,0.2);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 8px;
-      flex-shrink: 0;
-    }
-
-    /* FORM */
-    .contact-form-wrap {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 2.5rem;
-    }
-    .form-title {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 0.4rem;
-    }
-    .form-subtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .form-group { margin-bottom: 1.25rem; }
-    .form-group label {
+    .form-label {
       display: block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
       margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
+    .form-input {
       width: 100%;
-      padding: 0.75rem 1rem;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      color: var(--text);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-primary);
       font-family: var(--font-body);
-      font-size: 0.9rem;
-      transition: all 0.2s;
-      outline: none;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: var(--text-muted); }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: rgba(59,130,246,0.5);
-      background: rgba(59,130,246,0.04);
-      box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
-    }
-    .form-group select option { background: #0c1425; }
-    .form-group textarea { resize: vertical; min-height: 120px; }
-
-    .form-submit {
-      width: 100%;
-      padding: 0.9rem;
-      border-radius: 12px;
       font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      background: var(--gradient);
-      color: white;
-      border: none;
-      font-family: var(--font-body);
-      transition: all 0.25s;
-      letter-spacing: 0.02em;
+      padding: 0.85rem 1.1rem;
+      transition: var(--transition);
+      outline: none;
     }
-    .form-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(59,130,246,0.4);
+    .form-input:focus {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+      box-shadow: 0 0 0 3px rgba(0,212,255,0.08);
     }
-
-    .form-note { font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem; }
-
-    .success-msg {
-      display: none;
-      padding: 1.25rem;
-      background: rgba(16,185,129,0.1);
-      border: 1px solid rgba(16,185,129,0.2);
-      border-radius: 12px;
-      text-align: center;
-      color: #34d399;
-      font-weight: 600;
-      margin-top: 1rem;
-      font-size: 0.9rem;
+    textarea.form-input { resize: vertical; min-height: 130px; }
+    select.form-input option { background: var(--bg-card); }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      transition: var(--transition);
     }
-
-    @media (max-width: 900px) {
-      .contact-layout { grid-template-columns: 1fr; }
+    .contact-info-item:hover { border-color: var(--border-hover); }
+    .contact-info-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(0,212,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
     }
-    @media (max-width: 600px) {
-      .form-row { grid-template-columns: 1fr; }
+    .contact-info-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 0.3rem; }
+    .contact-info-value { font-size: 0.9rem; color: var(--text-primary); }
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .name-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html" class="nav-logo">
-      <div class="logo-hex">N</div>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="hex-icon">
+        <svg viewBox="0 0 32 32" width="32" height="32" fill="none">
+          <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" fill="rgba(124,92,252,0.15)" stroke="#7c5cfc" stroke-width="1.5"/>
+          <text x="16" y="21" text-anchor="middle" fill="#7c5cfc" font-size="13" font-weight="700" font-family="sans-serif">N</text>
+        </svg>
+      </div>
       NayuTech
     </a>
-    <ul class="nav-links">
-      <li><a href="services.html">Services</a></li>
-      <li><a href="training.html">AI Training</a></li>
-      <li><a href="sectors.html">Sectors</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html" class="nav-cta active">Get Started →</a></li>
+     <ul class="nav-links">
+      <li><a href="./index.html#services">Services</a></li>
+      <li><a href="./index.html#training">AI Training</a></li>
+      <li><a href="./index.html#sectors">Sectors</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./index.html#blogs">Blog</a></li>
+      <li><a href="./contact-us.html" class="nav-cta">Get Started →</a></li>
     </ul>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="services.html">Services</a>
-    <a href="training.html">AI Training</a>
-    <a href="sectors.html">Sectors</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="nav-cta">Get Started →</a>
+    <button class="nav-hamburger" onclick="toggleMobileMenu()">☰</button>
   </div>
+</nav>
 
-  <div class="page">
-    <div class="page-hero" style="padding-bottom:3rem;">
-      <div class="section-label" style="justify-content:center;">Let's Talk</div>
-      <h1>Start Your <em style="font-style:normal;background:linear-gradient(135deg,#93c5fd,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AI Journey</em></h1>
-      <p>Whether you're ready to deploy, still exploring, or just have a question — we're here to help. No obligation, no pitch decks.</p>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <span class="mobile-close" id="mobile-close" role="button" tabindex="0" aria-label="Close menu">✕</span>
+      <li><a href="./index.html#services">Services</a></li>
+      <li><a href="./index.html#training">AI Training</a></li>
+      <li><a href="./index.html#sectors">Sectors</a></li>
+      <li><a href="./about.html" class="active">About</a></li>
+      <li><a href="./index.html#blogs">Blog</a></li>
+      <li><a href="./contact-us.html" class="nav-cta">Get Started →</a></li>
+</div>
+
+<section style="padding: 10rem 0 6rem; position:relative; overflow:hidden;">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <div class="container" style="position:relative;z-index:2">
+    <div class="reveal" style="text-align:center; max-width:560px; margin:0 auto 0;">
+      <div class="section-label">Let's Connect</div>
+      <h1 class="section-title">Start Your <em>AI & IT Transformation</em> Journey</h1>
+      <p class="section-sub" style="margin:0 auto">Tell us about your project or training needs. We are your AI partner for consulting, automation, and enterprise IT services.</p>
     </div>
 
-    <section style="padding-top:3rem;">
-      <div class="contact-layout">
-
-        <div class="contact-info reveal">
-          <h2>How Can We Help?</h2>
-          <p>We work with enterprise teams across financial services and beyond. Here are the most common reasons clients reach out:</p>
-
-          <div class="contact-reasons">
-            <div class="contact-reason">I want to build a Generative AI or agentic workflow</div>
-            <div class="contact-reason">I need to modernize legacy systems with AI</div>
-            <div class="contact-reason">I want to train my team in AI skills</div>
-            <div class="contact-reason">I need a cloud or data platform upgrade</div>
-            <div class="contact-reason">I want to automate repetitive processes with RPA + AI</div>
-            <div class="contact-reason">I want to modernize our contact center</div>
-            <div class="contact-reason">I'm exploring where AI fits in my organization</div>
+    <div class="contact-grid">
+      <!-- Left: Contact Info -->
+      <div class="reveal">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📍</div>
+          <div>
+            <div class="contact-info-label">Head Office</div>
+            <div class="contact-info-value">Toronto, Ontario, Canada</div>
           </div>
-
-          <div class="info-items" style="margin-top:2.5rem;">
-            <div class="info-item">
-              <span class="info-icon">📍</span>
-              <div>
-                <div class="info-label">Office</div>
-                <div class="info-value">Toronto, Ontario, Canada</div>
-              </div>
-            </div>
-            <div class="info-item">
-              <span class="info-icon">✉️</span>
-              <div>
-                <div class="info-label">Email</div>
-                <div class="info-value">info@nayutechnologies.com</div>
-              </div>
-            </div>
-            <div class="info-item">
-              <span class="info-icon">💼</span>
-              <div>
-                <div class="info-label">LinkedIn</div>
-                <div class="info-value"><a href="https://www.linkedin.com/company/nayutech" target="_blank" rel="noopener" style="color:#93c5fd;text-decoration:none;">linkedin.com/company/nayutech</a></div>
-              </div>
-            </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">✉️</div>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-value"><a href="mailto:info@nayutechnologies.com" style="color:var(--accent)">info@nayutechnologies.com</a></div>
           </div>
-
-          <div style="padding:1.25rem;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.12);border-radius:14px;">
-            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:#3b82f6;font-weight:700;margin-bottom:0.5rem;">⚡ Typical Response Time</div>
-            <div style="font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:var(--white);">Within 1 Business Day</div>
-            <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem;">Monday–Friday, 9am–6pm EST</div>
+        </div>
+          <div class="contact-info-item">
+          <div class="contact-info-icon">💼</div>
+          <div>
+            <div class="contact-info-label">LinkedIn</div>
+            <div class="contact-info-value"><a href="https://www.linkedin.com/company/nayutech" style="color:var(--accent)" target="_blank" rel="noopener noreferrer">linkedin.com/company/nayutech</a></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🔗</div>
+          <div>
+            <div class="contact-info-label">Join Our LinkedIn Group</div>
+            <div class="contact-info-value">Connect with enterprise AI, automation, and IT leaders in our LinkedIn community.
+              <br /><a href="https://www.linkedin.com/company/nayutech" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Join the conversation →</a>
+            </div>
           </div>
         </div>
 
-        <div class="contact-form-wrap reveal">
-          <div class="form-title">Book a Free Consultation</div>
-          <div class="form-subtitle">Fill out the form and one of our AI advisors will be in touch shortly.</div>
-
-          <form id="contactForm" onsubmit="handleSubmit(event)">
-            <div class="form-row">
-              <div class="form-group">
-                <label>First Name *</label>
-                <input type="text" placeholder="Jane" required/>
-              </div>
-              <div class="form-group">
-                <label>Last Name *</label>
-                <input type="text" placeholder="Smith" required/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Work Email *</label>
-              <input type="email" placeholder="jane.smith@company.com" required/>
-            </div>
-            <div class="form-group">
-              <label>Company *</label>
-              <input type="text" placeholder="Your Company Name" required/>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Job Title</label>
-                <input type="text" placeholder="VP of Technology"/>
-              </div>
-              <div class="form-group">
-                <label>Company Size</label>
-                <select>
-                  <option value="">Select size...</option>
-                  <option>1–50 employees</option>
-                  <option>51–200 employees</option>
-                  <option>201–1,000 employees</option>
-                  <option>1,001–5,000 employees</option>
-                  <option>5,000+ employees</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Primary Interest *</label>
-              <select required>
-                <option value="">What are you looking for?</option>
-                <option>Generative AI & Agentic Workflows</option>
-                <option>Digital Transformation</option>
-                <option>Cloud, Data & Cybersecurity</option>
-                <option>Intelligent Automation & RPA</option>
-                <option>Contact Center Modernization</option>
-                <option>AI Training & Enablement</option>
-                <option>AI Strategy & Consulting</option>
-                <option>Not sure yet — exploring options</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Tell Us About Your Challenge</label>
-              <textarea placeholder="What are you trying to accomplish? What challenges are you facing? Any context helps us prepare for the right conversation..."></textarea>
-            </div>
-
-            <button type="submit" class="form-submit">Send Message & Book a Call →</button>
-            <div class="form-note">🔒 We respect your privacy. No spam, ever. Unsubscribe any time.</div>
-            <div class="success-msg" id="successMsg">
-              ✅ Thanks! We'll be in touch within 1 business day.
-            </div>
-          </form>
+        <div style="margin-top:2rem; padding:1.5rem; background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(123,97,255,0.06)); border:1px solid var(--border); border-radius:var(--radius-lg);">
+          <h4 style="font-family:var(--font-display);font-weight:700;margin-bottom:0.5rem;">What to expect:</h4>
+          <div class="service-features">
+            <div class="service-feature">Response within 1 business day</div>
+            <div class="service-feature">Free 30-minute discovery call</div>
+            <div class="service-feature">Custom proposal within 5 days</div>
+            <div class="service-feature">No commitment required</div>
+          </div>
         </div>
       </div>
-    </section>
 
-    <footer style="margin-top:5rem;">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-logo" style="display:inline-flex;"><div class="logo-hex">N</div>NayuTech</a>
-          <p>Nayu Technologies Inc. is an AI & automation consulting firm helping enterprises harness the power of intelligent technology.</p>
-          <div class="footer-social">
-            <a href="https://www.linkedin.com/company/nayutech" class="social-link" target="_blank">in</a>
-            <a href="mailto:info@nayutechnologies.com" class="social-link">@</a>
+      <!-- Right: Form -->
+      <div class="card reveal reveal-delay-1">
+        <form id="contact-form" action="https://formspree.io/f/meepayno" method="POST">
+          <div class="name-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div class="form-group">
+              <label class="form-label" for="fname">First Name *</label>
+              <input class="form-input" type="text" id="fname" name="first_name" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lname">Last Name *</label>
+              <input class="form-input" type="text" id="lname" name="last_name" placeholder="Smith" required />
+            </div>
           </div>
-        </div>
-        <div class="footer-col">
-          <h5>Services</h5>
-          <ul>
-            <li><a href="services.html">Generative AI</a></li>
-            <li><a href="services.html">Intelligent Automation</a></li>
-            <li><a href="services.html">Digital Transformation</a></li>
-            <li><a href="services.html">Cloud & Security</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Company</h5>
-          <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="training.html">AI Training</a></li>
-            <li><a href="sectors.html">Sectors</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Office</h5>
-          <div class="footer-address">Toronto, Ontario, Canada<br>info@nayutechnologies.com</div>
+          <div class="form-group">
+            <label class="form-label" for="email">Work Email *</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="jane@company.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="company">Company</label>
+            <input class="form-input" type="text" id="company" name="company" placeholder="Your Company Inc." />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="service">I'm interested in</label>
+            <select class="form-input" id="service" name="service">
+              <option value="">Select a service...</option>
+              <option>Generative AI &amp; Agentic Workflows</option>
+              <option>Digital Transformation</option>
+              <option>Intelligent Automation &amp; RPA</option>
+              <option>Cloud, Data &amp; Cybersecurity</option>
+              <option>DevSecOps &amp; Secure Automation</option>
+              <option>AI Training Programs</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Tell us about your project *</label>
+            <textarea class="form-input" id="message" name="message" placeholder="Describe your challenge, project goals, or training needs..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:1rem;">
+            Send Message →
+          </button>
+          <p style="text-align:center;font-size:0.75rem;color:var(--text-dim);margin-top:1rem;">
+            By submitting you agree to our Privacy Policy. We never spam.
+          </p>
+        </form>
+        <div id="form-success" style="display:none;text-align:center;padding:2rem;">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">✅</div>
+          <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:800;margin-bottom:0.5rem;">Message Received!</h3>
+          <p style="color:var(--text-secondary)">We'll be in touch within one business day.</p>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2025 Nayu Technologies Inc. All rights reserved.</p>
-        <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
-      </div>
-    </footer>
+    </div>
   </div>
+</section>
 
-  <script src="main.js"></script>
-  <script>
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('.form-submit');
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-      setTimeout(() => {
-        document.getElementById('successMsg').style.display = 'block';
-        btn.style.display = 'none';
-        e.target.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
-      }, 1200);
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo" style="display:inline-flex;">
+          <div class="hex-icon">
+            <svg viewBox="0 0 32 32" width="32" height="32" fill="none">
+              <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" fill="rgba(124,92,252,0.15)" stroke="#7c5cfc" stroke-width="1.5"/>
+              <text x="16" y="21" text-anchor="middle" fill="#7c5cfc" font-size="13" font-weight="700" font-family="sans-serif">N</text>
+            </svg>
+          </div>
+          NayuTech
+        </a>
+        <p>Nayu Technologies Inc. is an AI & automation consulting firm helping enterprises in financial services and beyond harness the power of intelligent technology.</p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/nayutech" class="social-btn" target="_blank" rel="noopener">in</a>
+          <a href="#contact-us" class="social-btn" title="Contact us">@</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Generative AI</a></li>
+          <li><a href="#services">Intelligent Automation</a></li>
+          <li><a href="#services">Digital Transformation</a></li>
+          <li><a href="#services">Cloud & Security</a></li>
+          <li><a href="#services">Contact Center AI</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>AI Training</h4>
+        <ul>
+          <li><a href="#training">AI Literacy</a></li>
+          <li><a href="#training">GenAI for Business</a></li>
+          <li><a href="#training">LLM Engineering</a></li>
+          <li><a href="#training">Agentic AI</a></li>
+          <li><a href="#training">Executive Strategy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#blogs">Blog</a></li><!-- FIXED: was pointing to training.html -->
+          <li><a href="./contact-us.html">Careers</a></li>
+          <li><a href="./contact-us.html">Contact</a></li>
+          <li><p style="color:var(--muted2);font-size:13px;margin-top:4px;">Toronto, Ontario, Canada</p></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Nayu Technologies Inc. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="./contact-us.html">Privacy Policy</a>
+        <a href="./contact-us.html">Terms of Service</a>
+      </div>
+      <div class="footer-ai-badge">
+        <svg width="12" height="12" viewBox="0 0 32 32" fill="none">
+          <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" stroke="#7c5cfc" stroke-width="1.5"/>
+        </svg>
+        AI-Powered Company
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  const form = document.getElementById('contact-form');
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (form.action.includes('YOUR_FORM_ID')) {
+      alert('Please configure a valid Formspree form ID in contact.html before going live.');
+      return;
     }
-  </script>
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Error — Try Again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Error — Try Again';
+      btn.disabled = false;
+    }
+  });
+</script>
 </body>
 </html>
