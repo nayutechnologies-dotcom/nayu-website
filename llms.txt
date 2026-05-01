@@ -1,0 +1,19 @@
+# Nayu Technologies
+
+> Nayu Technologies empowers enterprises with intelligent automation, generative AI, and IT services. We specialize in digital transformation for Fortune 500 companies and Canada's Big 5 banks.
+
+## Core Expertise
+- [Generative AI Consulting](https://nayutechnologies.com): Implementation strategies for LLMs and autonomous agents in financial services.
+- [Intelligent Automation](https://nayutechnologies.com): Streamlining enterprise workflows using AI-driven process automation.
+- [IT Services](https://nayutechnologies.com): High-scale infrastructure and modern IT solutions for regulated industries.
+
+## Targeted Industries
+- **Banking & Finance:** Specialized solutions for Canada's Big 5 banks.
+- **Enterprise:** Scalable IT and AI integration for Fortune 500 organizations.
+
+## Contact & Engagement
+- [Book a Consultation](https://nayutechnologies.com): Schedule a free strategic session for AI and automation.
+- [About Nayu](https://nayutechnologies.com): Our mission, leadership, and experience in the Canadian financial sector.
+
+## Optional Reference
+- [Technical Blog](https://nayutechnologies.com): Latest insights on AI trends and automation case studies.
