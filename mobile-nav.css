@@ -114,6 +114,10 @@
     left: 0;
     right: 0;
     z-index: 999; /* below hamburger (1001) but above everything else */
+    max-height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 
     /* Glass-dark background — same language as the nav bar */
     background: rgba(8, 12, 20, 0.97);
@@ -290,21 +294,7 @@
      the open panel for focus
   ══════════════════════════════════════ */
   .mobile-nav-backdrop {
-    display: block; /* re-enable in mobile */
-    position: fixed;
-    inset: 0;
-    z-index: 998; /* below the panel */
-    background: rgba(0, 0, 0, 0);
-    backdrop-filter: blur(0px);
-    -webkit-backdrop-filter: blur(0px);
-    pointer-events: none;
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity         0.38s ease,
-      background      0.38s ease,
-      backdrop-filter 0.38s ease,
-      visibility      0s    0.38s; /* delayed so panel can animate out first */
+    display: none; /* re-enable in mobile */
   }
 
   .mobile-nav-backdrop.is-open {
