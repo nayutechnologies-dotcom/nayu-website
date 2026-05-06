@@ -652,48 +652,50 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem
 <body>
 
 <!-- NAV -->
-<nav id="siteNav">
-  <a class="nav-logo" href="./index.html">
+
+<nav>
+  <a class="nav-logo" href="#">
     <div class="nav-logo-mark">N</div>
     NayuTech
   </a>
-  <ul class="nav-links" role="list">
+  <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#training">AI Training</a></li>
     <li><a href="#sectors">Sectors</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#blog">Insights</a></li>
   </ul>
-  <!-- Desktop CTA — hidden on mobile via mobile-nav.css -->
   <a class="btn btn-primary nav-cta-desktop" href="./contact.html">Get Started →</a>
-  <!-- Hamburger — visible on mobile only -->
-  <button class="nav-hamburger" id="navHamburger"
-    aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNavPanel">
+  <button
+    class="nav-hamburger"
+    id="navHamburger"
+    aria-expanded="false"
+    aria-label="Open navigation"
+    aria-controls="mobileNavPanel"
+  >
     <span class="hamburger-line"></span>
     <span class="hamburger-line"></span>
     <span class="hamburger-line"></span>
-   </button>
+  </button>
 </nav>
 
-<!-- ─── MOBILE NAV PANEL ───
-     Slides down from the nav bar on mobile (≤900px).
-     Controlled by mobile-nav.js + mobile-nav.css          -->
+<!-- Mobile panel — styled by mobile-nav.css, toggled by mobile-nav.js -->
 <div class="mobile-nav-panel" id="mobileNavPanel" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
   <div class="mobile-nav-inner">
     <nav class="mobile-nav-list" aria-label="Site links">
-      <a href="#services"      class="mobile-nav-link">Services</a>
-      <a href="#training"      class="mobile-nav-link">AI Training</a>
-      <a href="#sectors"       class="mobile-nav-link">Sectors</a>
-      <a href="./about.html"   class="mobile-nav-link">About</a>
-      <a href="#blog"          class="mobile-nav-link">Insights</a>
+      <a class="mobile-nav-link" href="#services">Services</a>
+      <a class="mobile-nav-link" href="#training">AI Training</a>
+      <a class="mobile-nav-link" href="#sectors">Sectors</a>
+      <a class="mobile-nav-link" href="#about">About</a>
+      <a class="mobile-nav-link" href="#blog">Insights</a>
     </nav>
     <div class="mobile-nav-footer">
-      <a href="./contact.html" class="mobile-nav-cta">Get Started →</a>
+      <a class="mobile-nav-cta" href="./contact.html">Get Started →</a>
     </div>
   </div>
 </div>
-<!-- Backdrop dimmer — tapping closes the menu -->
 <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+
 
 <!-- HERO -->
 <section id="hero">
