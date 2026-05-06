@@ -27,7 +27,8 @@
 @media (max-width: 900px) {
 
   /* ── Hide desktop-only nav items ── */
-  .nav-links,
+.nav-links {   height: 100vh;   overflow-y: auto;   -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+  padding-bottom: 40px; /* space for last item */ }
   .nav-cta-desktop {
     display: none !important;
   }
