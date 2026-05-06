@@ -71,6 +71,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./mobile-nav.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -631,7 +632,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem
     .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .process-steps::before { display: none; }
-    nav .nav-links { display: none; }
+    nav .nav-links { display: none; } /* handled by mobile-nav.css */
   }
 
   @media (max-width: 600px) {
@@ -644,20 +645,48 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem
 <body>
 
 <!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#">
+<nav id="siteNav">
+  <a class="nav-logo" href="./index.html">
     <div class="nav-logo-mark">N</div>
     NayuTech
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" role="list">
     <li><a href="#services">Services</a></li>
     <li><a href="#training">AI Training</a></li>
     <li><a href="#sectors">Sectors</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#blog">Insights</a></li>
   </ul>
-  <a class="btn btn-primary" href="./contact.html">Get Started →</a>
+  <!-- Desktop CTA — hidden on mobile via mobile-nav.css -->
+  <a class="btn btn-primary nav-cta-desktop" href="./contact.html">Get Started →</a>
+  <!-- Hamburger — visible on mobile only -->
+  <button class="nav-hamburger" id="navHamburger"
+    aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNavPanel">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
 </nav>
+
+<!-- ─── MOBILE NAV PANEL ───
+     Slides down from the nav bar on mobile (≤900px).
+     Controlled by mobile-nav.js + mobile-nav.css          -->
+<div class="mobile-nav-panel" id="mobileNavPanel" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+  <div class="mobile-nav-inner">
+    <nav class="mobile-nav-list" aria-label="Site links">
+      <a href="#services"      class="mobile-nav-link">Services</a>
+      <a href="#training"      class="mobile-nav-link">AI Training</a>
+      <a href="#sectors"       class="mobile-nav-link">Sectors</a>
+      <a href="./about.html"   class="mobile-nav-link">About</a>
+      <a href="#blog"          class="mobile-nav-link">Insights</a>
+    </nav>
+    <div class="mobile-nav-footer">
+      <a href="./contact.html" class="mobile-nav-cta">Get Started →</a>
+    </div>
+  </div>
+</div>
+<!-- Backdrop dimmer — tapping closes the menu -->
+<div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
 
 <!-- HERO -->
 <section id="hero">
@@ -1095,5 +1124,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem
 
   document.querySelectorAll('.fade-up:not(.visible)').forEach(el => observer.observe(el));
 </script>
+<script src="./mobile-nav.js" defer></script>
 </body>
 </html>

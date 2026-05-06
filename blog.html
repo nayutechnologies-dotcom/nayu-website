@@ -26,6 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./mobile-nav.css">
 
 <style>
 /* ════════════════════════════════════════════
@@ -140,44 +141,7 @@ nav.main-nav {
 .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
 .btn-ghost:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); }
 
-/* Hamburger — matches index.html */
-.nav-hamburger {
-  display: none;
-  flex-direction: column; justify-content: space-between;
-  width: 28px; height: 20px;
-  background: none; border: none; cursor: pointer; padding: 0;
-}
-.nav-hamburger span {
-  display: block; height: 2px; width: 100%;
-  background: var(--text); border-radius: 2px;
-  transition: all 0.3s ease;
-}
-.nav-hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-.nav-hamburger.open span:nth-child(2) { opacity: 0; }
-.nav-hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-
-/* Mobile menu — matches index.html */
-.mobile-menu {
-  display: none;
-  position: fixed; top: 68px; left: 0; right: 0;
-  background: rgba(8,12,20,0.98); backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  z-index: 99; padding: 1.5rem 2rem 2rem; flex-direction: column;
-}
-.mobile-menu.open { display: flex; }
-.mobile-menu a {
-  color: var(--text-muted); text-decoration: none;
-  font-size: 1rem; padding: 1rem 0;
-  border-bottom: 1px solid var(--border); transition: color 0.2s;
-}
-.mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu a:hover { color: var(--accent); }
-.mobile-menu .mobile-cta {
-  margin-top: 1.5rem;
-  background: var(--accent); color: #080C14;
-  text-align: center; border-radius: 6px; padding: 0.85rem;
-  font-weight: 600; border-bottom: none;
-}
+/* Hamburger + mobile menu — handled by mobile-nav.css */
 
 /* ════════════════════════════════════════════
    HERO — same structure/feel as index.html
@@ -540,7 +504,7 @@ footer {
 @media (max-width: 900px) {
   nav.main-nav .nav-links { display: none; }
   nav.main-nav .btn { display: none; }
-  .nav-hamburger { display: flex; }
+  /* .nav-hamburger shown via mobile-nav.css */
   .blog-card.featured { grid-template-columns: 1fr; }
   .blog-card.featured .card-visual { height: 200px; }
   .blog-card.featured .card-title { font-size: 1.5rem; }
@@ -563,9 +527,9 @@ footer {
 <body>
 
 <!-- ════════════════════════════════════════
-     NAV — matches index.html exactly
+     NAV
 ════════════════════════════════════════ -->
-<nav class="main-nav" role="navigation" aria-label="Main navigation">
+<nav class="main-nav" id="siteNav" role="navigation" aria-label="Main navigation">
   <a class="nav-logo" href="./index.html" aria-label="Nayu Technologies home">
     <div class="nav-logo-mark" aria-hidden="true">N</div>
     NayuTech
@@ -577,22 +541,31 @@ footer {
     <li><a href="./about.html">About</a></li>
     <li><a href="./blog.html" class="active">Insights</a></li>
   </ul>
-  <a class="btn btn-primary" href="./contact.html">Get Started →</a>
-  <button class="nav-hamburger" id="hamburgerBtn"
-    aria-label="Toggle mobile navigation" aria-expanded="false" aria-controls="mobileMenu">
-    <span></span><span></span><span></span>
+  <a class="btn btn-primary nav-cta-desktop" href="./contact.html">Get Started →</a>
+  <button class="nav-hamburger" id="navHamburger"
+    aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNavPanel">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
   </button>
 </nav>
 
-<!-- Mobile menu -->
-<nav class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
-  <a href="./index.html#services" onclick="closeMobileMenu()">Services</a>
-  <a href="./index.html#training" onclick="closeMobileMenu()">AI Training</a>
-  <a href="./index.html#sectors" onclick="closeMobileMenu()">Sectors</a>
-  <a href="./about.html">About</a>
-  <a href="./blog.html" style="color:var(--accent)">Blog</a>
-  <a href="./contact.html" class="mobile-cta">Get Started →</a>
-</nav>
+<!-- Mobile Nav Panel -->
+<div class="mobile-nav-panel" id="mobileNavPanel" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+  <div class="mobile-nav-inner">
+    <nav class="mobile-nav-list" aria-label="Site links">
+      <a href="./index.html#services"  class="mobile-nav-link">Services</a>
+      <a href="./index.html#training"  class="mobile-nav-link">AI Training</a>
+      <a href="./index.html#sectors"   class="mobile-nav-link">Sectors</a>
+      <a href="./about.html"           class="mobile-nav-link">About</a>
+      <a href="./blog.html"            class="mobile-nav-link active">Insights</a>
+    </nav>
+    <div class="mobile-nav-footer">
+      <a href="./contact.html" class="mobile-nav-cta">Get Started →</a>
+    </div>
+  </div>
+</div>
+<div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
 
 <!-- ════════════════════════════════════════
      HERO
@@ -856,25 +829,7 @@ footer {
 </div>
 
 <script>
-/* ── Mobile Nav ── */
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const mobileMenu   = document.getElementById('mobileMenu');
-
-hamburgerBtn.addEventListener('click', () => {
-  const isOpen = mobileMenu.classList.toggle('open');
-  hamburgerBtn.classList.toggle('open', isOpen);
-  hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
-});
-
-function closeMobileMenu() {
-  mobileMenu.classList.remove('open');
-  hamburgerBtn.classList.remove('open');
-  hamburgerBtn.setAttribute('aria-expanded', 'false');
-}
-
-document.addEventListener('click', e => {
-  if (!mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) closeMobileMenu();
-});
+/* ── Mobile Nav — handled by mobile-nav.js ── */
 
 /* ── Canvas visual backgrounds ── */
 function drawCanvas(id, color1, color2) {
@@ -1142,5 +1097,6 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closePost();
 });
 </script>
+<script src="./mobile-nav.js" defer></script>
 </body>
 </html>
