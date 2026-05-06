@@ -72,6 +72,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./mobile-nav.css">
+<!-- Shared design system -->
+<link rel="stylesheet" href="styles.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -651,46 +653,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem
 </head>
 <body>
 
-<!-- NAV -->
-
-<nav>
-  <a class="nav-logo" href="#">
-    <div class="nav-logo-mark">N</div>
-    NayuTech
-  </a>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#training">AI Training</a></li>
-    <li><a href="#sectors">Sectors</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#blog">Insights</a></li>
-  </ul>
-  <a class="btn btn-primary nav-cta-desktop" href="./contact.html">Get Started →</a>
-  <button     class="nav-hamburger"     id="navHamburger"     aria-expanded="false"     aria-label="Open navigation"     aria-controls="mobileNavPanel"   >
-    <span class="hamburger-line"></span>
-    <span class="hamburger-line"></span>
-    <span class="hamburger-line"></span>
-  </button>
-</nav>
-
-<!-- Mobile panel — styled by mobile-nav.css, toggled by mobile-nav.js -->
-<div class="mobile-nav-panel" id="mobileNavPanel" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
-  <div class="mobile-nav-inner">
-    <nav class="mobile-nav-list" aria-label="Site links">
-      <a class="mobile-nav-link" href="#services">Services</a>
-      <a class="mobile-nav-link" href="#training">AI Training</a>
-      <a class="mobile-nav-link" href="#sectors">Sectors</a>
-      <a class="mobile-nav-link" href="#about">About</a>
-      <a class="mobile-nav-link" href="#blog">Insights</a>
-    </nav>
-    <div class="mobile-nav-footer">
-      <a class="mobile-nav-cta" href="./contact.html">Get Started →</a>
-    </div>
-  </div>
-</div>
-<div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
-
-
 <!-- HERO -->
 <section id="hero">
   <div class="hero-glow"></div>
@@ -1127,6 +1089,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem
 
   document.querySelectorAll('.fade-up:not(.visible)').forEach(el => observer.observe(el));
 </script>
-<script src="./mobile-nav.js"></script>
+  <!-- Shared components (nav + footer injection + behaviors) -->
+  <script src="components.js"></script>
 </body>
 </html>
