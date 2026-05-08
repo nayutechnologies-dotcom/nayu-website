@@ -118,8 +118,6 @@ const FOOTER_HTML = `
 (function setActiveLink() {
   const path = window.location.pathname;
   const pageMap = {
-    'index.html': 'index',
-    '/':          'index',
     'about.html': 'about',
     'blog.html':  'blog',
     'contact.html': 'contact',
