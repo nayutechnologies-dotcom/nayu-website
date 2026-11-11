@@ -1,1020 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- ═══ SEO ═══ -->
-<title>Insights | Nayu Technologies Inc.</title>
-<meta name="description" content="Nayu Technologies offers AI and automation services for Canada’s leading financial institutions. Optimize your enterprise. Book a free call.">
-<link rel="canonical" href="https://nayutechnologies.com/">
-<link rel="help" type="text/plain" href="./llms.txt" title="AI-ready site summary">
-<!-- ═══ Open Graph ═══ -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://nayutechnologies.com/">
-<meta property="og:title" content="Insights | Nayu Technologies Inc.">
-<meta property="og:description" content="AI-powered transformation for modern enterprise. Intelligent automation, generative AI, and enterprise IT services delivering measurable digital transformation from pilot to production.">
-<meta property="og:image" content="https://nayutechnologies.com/assets/og-image.png">
-<meta property="og:site_name" content="Nayu Technologies">
-<meta property="og:locale" content="en_CA">
-
-<!-- ═══ Twitter Card ═══ -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Nayu Technologies — Enterprise AI & IT Services">
-<meta name="twitter:description" content="AI-powered transformation for modern enterprise. Serving Big 5 Banks and Fortune 500 companies in Canada.">
-<meta name="twitter:image" content="https://nayutechnologies.com/assets/og-image.png">
-
-<!-- ═══ Security Meta Headers ═══ -->
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-
-<!-- ═══ Favicon ═══ -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2300C9A7'/><text y='.9em' font-size='72' x='14' font-family='Georgia,serif' fill='%23080C14'>Nayu</text></svg>">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <!-- Shared design system -->
-  <link rel="stylesheet" href="styles.css">
-<style>
-/* ════════════════════════════════════════════
-   DESIGN TOKENS — identical to index.html
-════════════════════════════════════════════ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --bg:           #080C14;
-  --bg-card:      #0D1220;
-  --bg-surface:   #111826;
-  --bg-subtle:    #161E2E;
-  --accent:       #00C9A7;
-  --accent-dim:   rgba(0,201,167,0.12);
-  --accent-glow:  rgba(0,201,167,0.06);
-  --blue:         #3B7CF4;
-  --blue-dim:     rgba(59,124,244,0.1);
-  --border:       rgba(255,255,255,0.07);
-  --border-accent:rgba(0,201,167,0.3);
-  --text:         #EEF0F5;
-  --text-muted:   #7A8499;
-  --text-subtle:  #4A5468;
-  --serif:        'Instrument Serif', Georgia, serif;
-  --sans:         'Outfit', sans-serif;
-  --mono:         'DM Mono', monospace;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
-  font-size: 16px;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-/* Noise overlay — matches index.html */
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none; z-index: 0; opacity: 0.5;
-}
-
-/* ── Typography ── */
-h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
-em { font-style: italic; color: var(--accent); }
-.label {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 500;
-}
-
-/* ── Layout ── */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-section, .blog-section, .newsletter { position: relative; z-index: 1; }
-
-/* ════════════════════════════════════════════
-   NAV — identical to index.html
-════════════════════════════════════════════ */
-nav.main-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 1.25rem 2rem;
-  display: flex; align-items: center; justify-content: space-between;
-  border-bottom: 1px solid var(--border);
-  background: rgba(8,12,20,0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-.nav-logo {
-  display: flex; align-items: center; gap: 0.6rem;
-  text-decoration: none; color: var(--text);
-  font-family: var(--sans); font-weight: 600; font-size: 1rem; letter-spacing: -0.01em;
-}
-
-/* Square rounded mark — matches index.html */
-.nav-logo-mark {
-  width: 30px; height: 30px;
-  background: var(--accent);
-  border-radius: 7px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif); font-size: 1rem; color: #080C14;
-}
-
-.nav-links {
-  display: flex; align-items: center; gap: 2rem;
-  list-style: none;
-}
-.nav-links a {
-  color: var(--text-muted); text-decoration: none;
-  font-size: 0.875rem; font-weight: 400; transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--text); }
-.nav-links a.active { color: var(--accent); }
-
-/* Buttons — matches index.html */
-.btn {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.6rem 1.4rem; border-radius: 6px;
-  font-family: var(--sans); font-size: 0.875rem; font-weight: 500;
-  text-decoration: none; cursor: pointer; transition: all 0.2s; border: none;
-}
-.btn-primary { background: var(--accent); color: #080C14; }
-.btn-primary:hover { background: #00e0bc; transform: translateY(-1px); }
-.btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
-.btn-ghost:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); }
-
-/* Hamburger + mobile menu — handled by mobile-nav.css */
-
-/* ════════════════════════════════════════════
-   HERO — same structure/feel as index.html
-════════════════════════════════════════════ */
-.blog-hero {
-  padding: 10rem 2rem 5rem;
-  text-align: center;
-  position: relative; overflow: hidden; z-index: 1;
-}
-.blog-hero::before {
-  content: '';
-  position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
-  width: 700px; height: 500px;
-  background: radial-gradient(ellipse at 50% 0%, rgba(0,201,167,0.09) 0%, transparent 70%);
-  pointer-events: none;
-}
-.blog-hero::after {
-  content: '';
-  position: absolute; top: 20%; right: 5%;
-  width: 350px; height: 350px;
-  background: radial-gradient(circle, rgba(59,124,244,0.05) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.4rem 0.9rem;
-  background: var(--accent-dim);
-  border: 1px solid var(--border-accent);
-  border-radius: 100px;
-  margin-bottom: 1.5rem;
-}
-.hero-badge-dot {
-  width: 6px; height: 6px;
-  background: var(--accent); border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
-}
-.blog-hero h1 {
-  font-size: clamp(2.8rem, 6vw, 5rem);
-  letter-spacing: -0.025em; line-height: 1.08;
-  max-width: 700px; margin: 0 auto 1.25rem;
-}
-.blog-hero-sub {
-  color: var(--text-muted); font-size: 1.05rem; line-height: 1.7;
-  max-width: 520px; margin: 0 auto;
-}
-
-/* ════════════════════════════════════════════
-   SEARCH + FILTER BAR
-════════════════════════════════════════════ */
-.filter-bar {
-  max-width: 860px; margin: 3rem auto 0;
-  padding: 0 2rem;
-  display: flex; flex-direction: column;
-  gap: 1rem; align-items: center;
-  position: relative; z-index: 2;
-}
-.search-wrap { width: 100%; max-width: 480px; position: relative; }
-.search-wrap svg {
-  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-  color: var(--text-subtle);
-}
-.search-input {
-  width: 100%;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.75rem 1rem 0.75rem 2.75rem;
-  font-family: var(--sans); font-size: 0.9rem;
-  color: var(--text); outline: none; transition: border-color 0.2s;
-}
-.search-input::placeholder { color: var(--text-subtle); }
-.search-input:focus { border-color: var(--border-accent); background: var(--bg-subtle); }
-
-.tag-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
-.tag-btn {
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: 100px; padding: 0.4rem 1rem;
-  font-size: 0.8rem; font-family: var(--mono);
-  color: var(--text-muted); cursor: pointer; transition: all 0.18s;
-}
-.tag-btn:hover { border-color: var(--border-accent); color: var(--accent); }
-.tag-btn.active {
-  background: var(--accent-dim); border-color: var(--border-accent); color: var(--accent);
-}
-
-/* ════════════════════════════════════════════
-   BLOG GRID — styled to match index.html cards
-════════════════════════════════════════════ */
-.blog-section {
-  max-width: 1200px; margin: 4rem auto 0; padding: 0 2rem 6rem;
-}
-
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-/* Featured card spans full row */
-.blog-card.featured {
-  grid-column: 1 / -1;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 0; min-height: 340px;
-}
-
-.blog-card {
-  background: var(--bg-card);
-  display: flex; flex-direction: column;
-  text-decoration: none; color: inherit;
-  cursor: pointer;
-  transition: background 0.25s;
-  position: relative; overflow: hidden;
-}
-.blog-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0; transition: opacity 0.3s;
-}
-.blog-card:hover { background: var(--bg-subtle); }
-.blog-card:hover::before { opacity: 1; }
-
-/* Visual banner */
-.card-visual {
-  background: var(--bg-surface);
-  position: relative; overflow: hidden; flex-shrink: 0;
-}
-.blog-card:not(.featured) .card-visual { height: 180px; }
-.blog-card.featured .card-visual { height: 100%; min-height: 280px; }
-.card-visual canvas { width: 100%; height: 100%; display: block; }
-
-/* Card content */
-.card-content {
-  padding: 2rem; display: flex; flex-direction: column; flex: 1; gap: 0.9rem;
-}
-.blog-card.featured .card-content { padding: 2.5rem; justify-content: center; }
-
-.card-meta { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
-
-.card-tag {
-  background: var(--accent-dim); color: var(--accent);
-  border: 1px solid var(--border-accent); border-radius: 100px;
-  padding: 0.2rem 0.75rem;
-  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em;
-  text-transform: uppercase; font-family: var(--mono);
-}
-
-.card-date { color: var(--text-subtle); font-size: 0.75rem; font-family: var(--mono); }
-.card-read-time { color: var(--text-subtle); font-size: 0.75rem; margin-left: auto; font-family: var(--mono); }
-
-.card-title {
-  font-family: var(--serif); font-weight: 400;
-  letter-spacing: -0.015em; line-height: 1.25; color: var(--text);
-}
-.blog-card:not(.featured) .card-title { font-size: 1.25rem; }
-.blog-card.featured .card-title { font-size: 2rem; }
-
-.card-excerpt {
-  color: var(--text-muted); font-size: 0.875rem; line-height: 1.7;
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-}
-.blog-card.featured .card-excerpt { font-size: 0.95rem; -webkit-line-clamp: 4; }
-
-.card-footer {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-top: auto; padding-top: 1rem;
-  border-top: 1px solid var(--border);
-}
-.card-author { display: flex; align-items: center; gap: 0.6rem; }
-.author-avatar {
-  width: 30px; height: 30px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--blue));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.7rem; font-weight: 700; color: #080C14; flex-shrink: 0;
-  font-family: var(--mono);
-}
-.author-name { font-size: 0.8rem; font-weight: 500; color: var(--text-muted); }
-
-.card-link-arrow {
-  display: flex; align-items: center; gap: 0.4rem;
-  font-size: 0.8rem; font-weight: 500; color: var(--accent);
-  font-family: var(--mono); transition: gap 0.2s;
-}
-.blog-card:hover .card-link-arrow { gap: 0.7rem; }
-
-/* PDF badge */
-.pdf-badge {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  background: var(--blue-dim); border: 1px solid rgba(59,124,244,0.2);
-  border-radius: 4px; padding: 0.2rem 0.6rem;
-  font-size: 0.65rem; font-weight: 600; color: var(--blue);
-  letter-spacing: 0.06em; text-transform: uppercase; font-family: var(--mono);
-}
-
-/* ════════════════════════════════════════════
-   NEWSLETTER CTA — same panel style as index cards
-════════════════════════════════════════════ */
-.newsletter { max-width: 1200px; margin: 0 auto 5rem; padding: 0 2rem; }
-.newsletter-inner {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 3.5rem;
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 2.5rem; align-items: center;
-  position: relative; overflow: hidden;
-}
-.newsletter-inner::before {
-  content: '';
-  position: absolute; right: -80px; top: -80px;
-  width: 320px; height: 320px;
-  background: radial-gradient(ellipse, rgba(0,201,167,0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-.newsletter-inner::after {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-}
-.newsletter h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  letter-spacing: -0.015em; margin-bottom: 0.6rem;
-}
-.newsletter p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; }
-.newsletter-form { display: flex; gap: 0.75rem; flex-shrink: 0; }
-.newsletter-input {
-  background: var(--bg-subtle); border: 1px solid var(--border);
-  border-radius: 6px; padding: 0.75rem 1.1rem;
-  font-family: var(--sans); font-size: 0.875rem; color: var(--text);
-  outline: none; width: 220px; transition: border-color 0.2s;
-}
-.newsletter-input::placeholder { color: var(--text-subtle); }
-.newsletter-input:focus { border-color: var(--border-accent); }
-
-/* ════════════════════════════════════════════
-   MODAL — same as before but restyled to match
-════════════════════════════════════════════ */
-.modal-overlay {
-  display: none; position: fixed; inset: 0;
-  background: rgba(8,12,20,0.88); backdrop-filter: blur(10px);
-  z-index: 500; align-items: flex-start; justify-content: center;
-  padding: 3rem 1.5rem; overflow-y: auto;
-}
-.modal-overlay.open { display: flex; }
-.modal {
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: 20px; max-width: 780px; width: 100%;
-  position: relative; margin: auto;
-  animation: slideUp 0.3s cubic-bezier(0.16,1,0.3,1);
-}
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.modal-close {
-  position: absolute; top: 1.25rem; right: 1.25rem;
-  width: 34px; height: 34px;
-  border: 1px solid var(--border); border-radius: 7px;
-  background: var(--bg-subtle); color: var(--text-muted);
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; transition: all 0.2s; z-index: 10;
-}
-.modal-close:hover { border-color: var(--border-accent); color: var(--accent); }
-.modal-visual { height: 220px; border-radius: 18px 18px 0 0; overflow: hidden; }
-.modal-body { padding: 2.5rem; }
-.modal-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.1rem; }
-.modal-title {
-  font-family: var(--serif); font-size: 1.75rem; font-weight: 400;
-  letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.85rem;
-}
-.modal-meta {
-  display: flex; align-items: center; gap: 1rem;
-  color: var(--text-subtle); font-size: 0.8rem; font-family: var(--mono);
-  padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); margin-bottom: 1.75rem;
-}
-.modal-content { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; }
-.modal-content h2 {
-  font-family: var(--sans); font-size: 1.1rem; font-weight: 600;
-  color: var(--text); margin: 1.75rem 0 0.75rem; letter-spacing: -0.01em;
-}
-.modal-content p { margin-bottom: 1rem; }
-.modal-content ul { padding-left: 1.25rem; margin-bottom: 1rem; }
-.modal-content li { margin-bottom: 0.5rem; }
-.modal-content code {
-  background: var(--bg-subtle); border: 1px solid var(--border);
-  border-radius: 4px; padding: 0.15rem 0.45rem;
-  font-size: 0.82rem; color: var(--accent); font-family: var(--mono);
-}
-.modal-content pre {
-  background: var(--bg-subtle); border: 1px solid var(--border);
-  border-radius: 10px; padding: 1.25rem; overflow-x: auto; margin: 1.25rem 0;
-}
-.modal-content pre code { background: none; border: none; padding: 0; }
-.modal-content strong { color: var(--text); font-weight: 500; }
-.modal-pdf-bar {
-  display: flex; align-items: center; gap: 0.9rem;
-  background: var(--bg-subtle); border: 1px solid var(--border);
-  border-radius: 10px; padding: 0.9rem 1.1rem; margin: 1.75rem 0;
-}
-.modal-pdf-bar svg { color: var(--blue); flex-shrink: 0; }
-.modal-pdf-bar p { font-size: 0.875rem; color: var(--text-muted); flex: 1; margin: 0; }
-.modal-pdf-bar p strong { color: var(--text); }
-.pdf-download-btn {
-  background: var(--blue-dim); border: 1px solid rgba(59,124,244,0.3);
-  border-radius: 6px; padding: 0.5rem 1rem;
-  font-size: 0.8rem; font-weight: 500; color: var(--blue);
-  cursor: pointer; font-family: var(--mono); transition: all 0.2s;
-  white-space: nowrap; text-decoration: none; display: flex; align-items: center; gap: 0.4rem;
-}
-.pdf-download-btn:hover { background: rgba(59,124,244,0.18); }
-
-/* ════════════════════════════════════════════
-   FOOTER — identical to index.html
-════════════════════════════════════════════ */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 4rem 2rem 2.5rem;
-  background: var(--bg-card);
-  position: relative; z-index: 1;
-}
-.footer-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 3rem; padding-bottom: 3rem;
-  border-bottom: 1px solid var(--border); margin-bottom: 2rem;
-}
-.footer-desc { color: var(--text-muted); font-size: 0.875rem; margin-top: 1rem; line-height: 1.7; }
-.footer-col h4 {
-  font-family: var(--sans); font-weight: 600; font-size: 0.8rem;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--text-subtle); margin-bottom: 1.25rem;
-}
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-.footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
-.footer-col a:hover { color: var(--accent); }
-.footer-bottom {
-  max-width: 1200px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  font-size: 0.78rem; color: var(--text-subtle);
-}
-.footer-socials { display: flex; gap: 1rem; }
-.footer-socials a {
-  color: var(--text-subtle); text-decoration: none;
-  font-size: 0.78rem; font-family: var(--mono); transition: color 0.2s;
-}
-.footer-socials a:hover { color: var(--accent); }
-
-/* ════════════════════════════════════════════
-   RESPONSIVE — matches index.html breakpoints
-════════════════════════════════════════════ */
-@media (max-width: 900px) {
-  nav.main-nav .nav-links { display: none; }
-  nav.main-nav .btn { display: none; }
-  /* .nav-hamburger shown via mobile-nav.css */
-  .blog-card.featured { grid-template-columns: 1fr; }
-  .blog-card.featured .card-visual { height: 200px; }
-  .blog-card.featured .card-title { font-size: 1.5rem; }
-  .newsletter-inner { grid-template-columns: 1fr; padding: 2rem; }
-  .newsletter-form { flex-direction: column; width: 100%; }
-  .newsletter-input { width: 100%; }
-  .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .modal-body { padding: 1.75rem; }
-}
-@media (max-width: 600px) {
-  .blog-grid { grid-template-columns: 1fr; }
-  .filter-bar { padding: 0 1rem; }
-  .footer-inner { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-  .blog-hero { padding: 8rem 1.5rem 3rem; }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Insights &amp; Architecture Notes — Nayu Technologies Inc.</title>
+  <meta name="description" content="Implementation guides and architecture notes on Enterprise AI, RAG systems, Agentic Workflows, Cloud Migration, and API Modernization from Nayu Technologies Inc." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+    .filter-btn {
+      padding: 8px 16px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border-radius: 999px;
+      border: 1px solid var(--border-medium);
+      background-color: var(--bg-white);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .filter-btn:hover {
+      border-color: var(--accent-blue);
+      color: var(--accent-navy);
+    }
+    .filter-btn.active {
+      background-color: var(--accent-navy);
+      border-color: var(--accent-navy);
+      color: #FFFFFF;
+    }
+    .article-card {
+      cursor: pointer;
+      transition: border-color 0.18s ease, transform 0.18s ease;
+    }
+    .article-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+    .reader-container {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .reader-body h3 {
+      font-size: 1.25rem;
+      margin-top: 28px;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+    .reader-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- ════════════════════════════════════════
-     HERO
-════════════════════════════════════════ -->
-<section class="blog-hero" aria-label="Blog hero">
-  <div class="hero-badge">
-    <div class="hero-badge-dot" aria-hidden="true"></div>
-    <span class="label">Nayu Insights</span>
-  </div>
-  <h1>AI &amp; Automation<br><em>Intelligence</em></h1>
-  <p class="blog-hero-sub">Deep technical thinking on AI systems, enterprise automation, and the future of intelligent software — from the Nayu Technologies team.</p>
-</section>
+  <!-- Centralized Header injected by components.js -->
+  <div id="site-header"></div>
 
-<!-- ════════════════════════════════════════
-     FILTER BAR
-════════════════════════════════════════ -->
-<div class="filter-bar" role="search">
-  <div class="search-wrap">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-    </svg>
-    <input class="search-input" type="search" placeholder="Search articles…" id="searchInput"
-      oninput="filterCards()" aria-label="Search blog articles" />
-  </div>
-  <div class="tag-filters" role="group" aria-label="Filter by topic" id="tagFilters">
-    <button class="tag-btn active" data-tag="all" onclick="setTag(this)">All Posts</button>
-    <button class="tag-btn" data-tag="Generative AI" onclick="setTag(this)">Generative AI</button>
-    <button class="tag-btn" data-tag="Automation" onclick="setTag(this)">Automation</button>
-    <button class="tag-btn" data-tag="Architecture" onclick="setTag(this)">Architecture</button>
-    <button class="tag-btn" data-tag="FinTech" onclick="setTag(this)">FinTech</button>
-    <button class="tag-btn" data-tag="Cloud & AWS" onclick="setTag(this)">Cloud &amp; AWS</button>
-    <button class="tag-btn" data-tag="Cybersecurity" onclick="setTag(this)">Cybersecurity</button>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     BLOG GRID
-════════════════════════════════════════ -->
-<section class="blog-section" aria-label="Blog articles">
-  <div class="blog-grid" id="blogGrid">
-
-    <!-- ── Card 1: Featured ── -->
-    <article class="blog-card featured" data-tags="Generative AI,Architecture"
-      onclick="openPost(0)" tabindex="0" onkeydown="if(event.key==='Enter')openPost(0)"
-      role="button" aria-label="Read: Building Production-Grade RAG Systems">
-      <div class="card-visual" aria-hidden="true">
-        <canvas id="canvas1"></canvas>
+  <main>
+    <!-- Page Header -->
+    <section class="hero section-slate" style="padding: 64px 0;">
+      <div class="container">
+        <span class="eyebrow">Technical Insights</span>
+        <h1>Architecture patterns and implementation notes.</h1>
+        <p class="lead">
+          Practical engineering perspectives on production RAG systems, compliant agentic AI workflows, cloud migration, and modern API platforms.
+        </p>
       </div>
-      <div class="card-content">
-        <div class="card-meta">
-          <span class="card-tag">Generative AI</span>
-          <span class="card-tag">Architecture</span>
-          <span class="card-date">June 12, 2025</span>
-          <span class="card-read-time">12 min read</span>
+    </section>
+
+    <!-- Blog List & Reader Section -->
+    <section class="section section-white">
+      <div class="container">
+        
+        <!-- List View -->
+        <div id="blogListView">
+          <div class="filter-bar" id="categoryFilters"></div>
+          <div class="grid-3" id="blogGrid"></div>
         </div>
-        <h2 class="card-title">Building Production-Grade RAG Systems: From Prototype to Enterprise Scale</h2>
-        <p class="card-excerpt">Most RAG demos work beautifully in notebooks. Most RAG systems fail in production. This deep-dive covers the architectural decisions, retrieval strategies, and evaluation frameworks that separate toy prototypes from enterprise-grade knowledge systems handling millions of queries.</p>
-        <div class="card-footer">
-          <div class="card-author">
-            <div class="author-avatar" aria-hidden="true">NT</div>
-            <span class="author-name">Nayu Technologies</span>
+
+        <!-- Full Article Reader View (Hidden until an article is clicked) -->
+        <div id="blogReaderView" class="reader-container" style="display: none;">
+          <button id="backToListBtn" class="btn btn-secondary btn-sm" style="margin-bottom: 28px;">
+            &larr; Back to All Articles
+          </button>
+
+          <div id="readerContent" class="card" style="padding: 40px;"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="section section-slate">
+      <div class="container">
+        <div class="cta-box" style="background-color: var(--bg-white);">
+          <div>
+            <h2 style="margin-bottom: 8px;">Need experienced engineers or architects for your next build?</h2>
+            <p style="color: var(--text-secondary); max-width: 580px;">
+              Nayu Technologies provides technically vetted Cloud, API, Data, and AI specialists alongside turnkey contract resource and payroll management.
+            </p>
           </div>
-          <div class="card-link-arrow">
-            Read article
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <div style="flex-shrink: 0;">
+            <a href="contact.html" class="btn btn-primary">Partner With Us</a>
           </div>
         </div>
       </div>
-    </article>
+    </section>
+  </main>
 
-    <!-- ── Card 2 ── -->
-    <article class="blog-card" data-tags="Automation,FinTech"
-      onclick="openPost(1)" tabindex="0" onkeydown="if(event.key==='Enter')openPost(1)"
-      role="button" aria-label="Read: Agentic AI in Financial Services">
-      <div class="card-visual" aria-hidden="true">
-        <canvas id="canvas2"></canvas>
-      </div>
-      <div class="card-content">
-        <div class="card-meta">
-          <span class="card-tag">Automation</span>
-          <span class="card-tag">FinTech</span>
-          <span class="pdf-badge">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-            PDF
-          </span>
-        </div>
-        <div class="card-date" style="font-family:var(--mono);font-size:0.75rem;color:var(--text-subtle);">May 28, 2025 · 9 min read</div>
-        <h2 class="card-title">Agentic AI in Financial Services: Compliance-Safe Autonomous Workflows</h2>
-        <p class="card-excerpt">How leading Canadian banks are deploying multi-agent AI systems that operate within regulatory guardrails — with real architecture patterns for AML monitoring, credit decisioning, and claims automation.</p>
-        <div class="card-footer">
-          <div class="card-author">
-            <div class="author-avatar" aria-hidden="true">NT</div>
-            <span class="author-name">Nayu Technologies</span>
-          </div>
-          <div class="card-link-arrow">
-            Read + PDF
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </div>
-    </article>
+  <!-- Centralized Footer injected by components.js -->
+  <div id="site-footer"></div>
 
-    <!-- ── Card 3: AI for AWS Infrastructure ── -->
-    <article class="blog-card" data-tags="Cloud & AWS,Architecture"
-      onclick="openPost(2)" tabindex="0" onkeydown="if(event.key==='Enter')openPost(2)"
-      role="button" aria-label="Read: AI-Driven AWS Infrastructure Creation">
-      <div class="card-visual" aria-hidden="true">
-        <canvas id="canvas3"></canvas>
-      </div>
-      <div class="card-content">
-        <div class="card-meta">
-          <span class="card-tag">Cloud &amp; AWS</span>
-          <span class="card-tag">Architecture</span>
-        </div>
-        <div class="card-date" style="font-family:var(--mono);font-size:0.75rem;color:var(--text-subtle);">April 15, 2025 · 11 min read</div>
-        <h2 class="card-title">AI-Driven AWS Infrastructure: From Natural Language to Production IaC</h2>
-        <p class="card-excerpt">How AI tools like Amazon Q Developer, GitHub Copilot, and Terraform AI are reshaping cloud infrastructure creation — letting teams describe infrastructure in plain English and ship production-ready Terraform and CloudFormation in minutes, not days.</p>
-        <div class="card-footer">
-          <div class="card-author">
-            <div class="author-avatar" aria-hidden="true">NT</div>
-            <span class="author-name">Nayu Technologies</span>
-          </div>
-          <div class="card-link-arrow">
-            Read article
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- ── Card 4: AI for Cybersecurity in Banks ── -->
-    <article class="blog-card" data-tags="Cybersecurity,FinTech"
-      onclick="openPost(3)" tabindex="0" onkeydown="if(event.key==='Enter')openPost(3)"
-      role="button" aria-label="Read: AI for Cybersecurity in Banks">
-      <div class="card-visual" aria-hidden="true">
-        <canvas id="canvas4"></canvas>
-      </div>
-      <div class="card-content">
-        <div class="card-meta">
-          <span class="card-tag">Cybersecurity</span>
-          <span class="card-tag">FinTech</span>
-          <span class="pdf-badge">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-            PDF
-          </span>
-        </div>
-        <div class="card-date" style="font-family:var(--mono);font-size:0.75rem;color:var(--text-subtle);">March 20, 2025 · 14 min read</div>
-        <h2 class="card-title">AI-Powered Cybersecurity in Banking: Platforms, Patterns &amp; Real Deployments</h2>
-        <p class="card-excerpt">From Darktrace's autonomous threat detection to Microsoft Sentinel's AI-driven SIEM, Canada's Big 5 Banks are deploying AI security platforms that detect, investigate, and contain threats faster than any human SOC team ever could.</p>
-        <div class="card-footer">
-          <div class="card-author">
-            <div class="author-avatar" aria-hidden="true">NT</div>
-            <span class="author-name">Nayu Technologies</span>
-          </div>
-          <div class="card-link-arrow">
-            Read + PDF
-            <svg width="14" height="4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- ── Card 5: Coming soon ── -->
-    <article class="blog-card" data-tags="all" style="background:var(--accent-glow);">
-      <div class="card-content" style="justify-content:center;align-items:center;text-align:center;min-height:280px;">
-        <span class="label" style="display:block;margin-bottom:0.75rem;">Weekly Newsletter</span>
-        <h2 class="card-title" style="font-size:1.15rem;margin-bottom:0.75rem;">More articles coming soon</h2>
-        <p style="color:var(--text-muted);font-size:0.85rem;max-width:260px;margin:0 auto 1.5rem;">We publish weekly deep-dives on AI engineering, automation patterns, and enterprise transformation.</p>
-        <a href="#newsletter" class="btn btn-primary" style="font-size:0.85rem;padding:0.55rem 1.25rem;">Subscribe →</a>
-      </div>
-    </article>
-
-  </div><!-- /blog-grid -->
-</section>
-
-<!-- ════════════════════════════════════════
-     NEWSLETTER CTA
-════════════════════════════════════════ -->
-<section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
-  <div class="newsletter-inner">
-    <div>
-      <span class="label" style="display:block;margin-bottom:0.75rem;">Stay Sharp</span>
-      <h2 id="newsletter-title">Stay ahead of the <em>AI curve</em></h2>
-      <p>New articles every week on AI engineering, automation patterns, and enterprise transformation. No fluff — just technical depth.</p>
-    </div>
-    <form class="newsletter-form" onsubmit="handleNewsletter(event)" aria-label="Newsletter signup">
-      <input class="newsletter-input" type="email" placeholder="your@email.com"
-        required aria-label="Email address" autocomplete="email" />
-      <button class="btn btn-primary" type="submit">Subscribe →</button>
-    </form>
-  </div>
-</section>
-
-
-<!-- ════════════════════════════════════════
-     ARTICLE MODALS
-════════════════════════════════════════ -->
-<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Article reader"
-  onclick="if(event.target===this)closePost()">
-  <div class="modal">
-    <button class="modal-close" onclick="closePost()" aria-label="Close article">✕</button>
-    <div class="modal-visual" id="modalVisual" aria-hidden="true"></div>
-    <div class="modal-body">
-      <div class="modal-tags" id="modalTags"></div>
-      <h2 class="modal-title" id="modalTitle"></h2>
-      <div class="modal-meta" id="modalMeta"></div>
-      <div class="modal-content" id="modalContent"></div>
-    </div>
-  </div>
-</div>
-
-<script>
-/* ── Mobile Nav — handled by mobile-nav.js ── */
-
-/* ── Canvas visual backgrounds ── */
-function drawCanvas(id, color1, color2) {
-  const canvas = document.getElementById(id);
-  if (!canvas) return;
-  const dpr = window.devicePixelRatio || 1;
-  canvas.width  = canvas.offsetWidth  * dpr;
-  canvas.height = canvas.offsetHeight * dpr;
-  const ctx = canvas.getContext('2d');
-  ctx.scale(dpr, dpr);
-  const w = canvas.offsetWidth, h = canvas.offsetHeight;
-  const grad = ctx.createLinearGradient(0, 0, w, h);
-  grad.addColorStop(0, color1);
-  grad.addColorStop(1, color2);
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, w, h);
-  ctx.strokeStyle = 'rgba(0,201,167,0.12)';
-  ctx.lineWidth = 1;
-  const pts = Array.from({length: 12}, () => ({ x: Math.random()*w, y: Math.random()*h }));
-  pts.forEach((p, i) => {
-    pts.slice(i+1).forEach(q => {
-      if (Math.hypot(p.x-q.x, p.y-q.y) < w*0.5) {
-        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
-      }
-    });
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, 3, 0, Math.PI*2);
-    ctx.fillStyle = 'rgba(0,201,167,0.35)';
-    ctx.fill();
-  });
-}
-
-window.addEventListener('load', () => {
-  drawCanvas('canvas1', '#080C14', '#0D1A2A');
-  drawCanvas('canvas2', '#0A1020', '#0D1A2A');
-  drawCanvas('canvas3', '#08101A', '#0A1830');
-  drawCanvas('canvas4', '#0C0A14', '#0D1020');
-});
-
-/* ── Tag filtering ── */
-let activeTag = 'all';
-function setTag(btn) {
-  document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  activeTag = btn.dataset.tag;
-  filterCards();
-}
-
-function filterCards() {
-  const q = document.getElementById('searchInput').value.toLowerCase();
-  document.querySelectorAll('#blogGrid .blog-card').forEach(card => {
-    const tags   = (card.dataset.tags || '').toLowerCase();
-    const text   = card.textContent.toLowerCase();
-    const tagOk  = activeTag === 'all' || tags.includes(activeTag.toLowerCase());
-    const textOk = !q || text.includes(q);
-    card.style.display = (tagOk && textOk) ? '' : 'none';
-  });
-}
-
-/* ── Newsletter form ── */
-function handleNewsletter(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('button');
-  btn.textContent = '✓ Subscribed!';
-  btn.disabled = true;
-  btn.style.opacity = '0.7';
-}
-
-/* ── Article modal data ── */
-const posts = [
-  {
-    title: 'Building Production-Grade RAG Systems: From Prototype to Enterprise Scale',
-    tags: ['Generative AI', 'Architecture'],
-    date: 'June 12, 2025',
-    readTime: '12 min read',
-    author: 'Nayu Technologies',
-    bgColor: '#080C14',
-    hasPdf: false,
-    content: `
-      <p>Most RAG demos work beautifully in notebooks. Most RAG systems fail in production. After deploying RAG at scale across multiple Fortune 500 financial institutions, we've identified the specific failure modes — and the architectural patterns that prevent them.</p>
-      <h2>Why RAG Fails in Production</h2>
-      <p>The gap between a working RAG prototype and a production-grade system is vast. Three failure modes account for 80% of production issues:</p>
-      <ul>
-        <li><strong>Retrieval quality degradation</strong> — embeddings that work well on dev data break on edge cases at scale</li>
-        <li><strong>Context window mismanagement</strong> — naive chunking strategies that lose meaning at chunk boundaries</li>
-        <li><strong>Lack of evaluation pipelines</strong> — no systematic way to detect drift or regressions post-deploy</li>
-      </ul>
-      <h2>Chunking Strategy</h2>
-      <p>Fixed-size chunking is the quickest path to production failure. We use a hybrid approach: semantic chunking with <code>sentence-transformers</code> for boundary detection, combined with a sliding-window overlap to preserve cross-chunk context. For financial documents, we layer in structure-aware chunking that respects section headers and table boundaries.</p>
-      <h2>Retrieval Architecture</h2>
-      <p>Pure vector search is insufficient for enterprise RAG. The winning pattern is a hybrid retrieval pipeline: dense vector search (via pgvector or Pinecone) + sparse BM25 retrieval, fused using Reciprocal Rank Fusion (RRF). This combines semantic understanding with keyword precision — critical for regulatory and compliance document retrieval.</p>
-      <h2>Evaluation Framework</h2>
-      <p>Every production RAG system needs an evaluation pipeline that runs continuously. We implement RAGAS-based evaluation with custom metrics for our clients' domains, integrated into CI/CD so every model or prompt change is automatically graded before deployment.</p>
-    `
-  },
-  {
-    title: 'Agentic AI in Financial Services: Compliance-Safe Autonomous Workflows',
-    tags: ['Automation', 'FinTech'],
-    date: 'May 28, 2025',
-    readTime: '9 min read',
-    author: 'Nayu Technologies',
-    bgColor: '#0A0F1A',
-    hasPdf: true,
-    content: `
-      <p>Multi-agent AI systems are moving from research papers into production deployments at major Canadian financial institutions. But financial services has unique constraints that make standard agentic frameworks insufficient out of the box.</p>
-      <h2>The Compliance Challenge</h2>
-      <p>Every action an AI agent takes in a regulated environment must be auditable, reversible, and bounded by policy constraints. This fundamentally changes how you architect the agent orchestration layer.</p>
-      <h2>Architecture Pattern: Compliance-Aware Orchestration</h2>
-      <p>We use a three-layer architecture for compliant agentic systems:</p>
-      <ul>
-        <li><strong>Policy layer</strong> — a rule engine that pre-validates every proposed action against regulatory constraints before execution</li>
-        <li><strong>Orchestration layer</strong> — the LLM-based planner that decomposes tasks and sequences tool calls</li>
-        <li><strong>Execution layer</strong> — purpose-built tools with deterministic, auditable outputs and rollback capability</li>
-      </ul>
-      <h2>Real Deployment: AML Transaction Monitoring</h2>
-      <p>One Big 5 Bank client deployed a multi-agent AML monitoring system. The orchestrator agent receives suspicious transaction alerts, coordinates three specialist agents (pattern analysis, customer history lookup, and regulatory threshold checking), and produces a structured investigation report — all within 40 seconds and with a full audit trail.</p>
-      <h2>Key Guardrails</h2>
-      <p>Human-in-the-loop checkpoints are non-negotiable for high-stakes decisions. We architect explicit approval gates that pause agent execution and surface decisions to compliance officers, with a complete context package that explains the agent's reasoning chain.</p>
-    `
-  },
-  {
-    title: 'AI-Driven AWS Infrastructure: From Natural Language to Production IaC',
-    tags: ['Cloud & AWS', 'Architecture'],
-    date: 'April 15, 2025',
-    readTime: '11 min read',
-    author: 'Nayu Technologies',
-    bgColor: '#08101A',
-    hasPdf: false,
-    content: `
-      <p>Cloud infrastructure creation is being transformed by AI. Teams that once spent days writing Terraform modules are now describing their architecture in plain English and letting AI tools generate production-ready infrastructure-as-code in minutes. Here's what's actually working in enterprise AWS environments today.</p>
-
-      <h2>The AI IaC Tooling Landscape</h2>
-      <p>Several products have emerged as leaders in AI-assisted infrastructure creation:</p>
-      <ul>
-        <li><strong>Amazon Q Developer</strong> — AWS's native AI assistant can generate Terraform, CloudFormation, and CDK code from natural language prompts directly inside the AWS Console. It understands AWS service relationships and will flag misconfigurations like overly permissive IAM policies before you deploy.</li>
-        <li><strong>GitHub Copilot</strong> — Deeply integrated into VS Code and JetBrains, Copilot completes Terraform HCL and Ansible playbooks with context awareness of your existing modules. Its agent mode can scaffold an entire multi-tier VPC architecture from a single comment.</li>
-        <li><strong>Pulumi AI</strong> — Pulumi's AI interface lets you describe infrastructure in natural language and generates type-safe IaC in Python, TypeScript, or Go. Its real advantage is producing actual programming-language code rather than DSL, making it far more testable.</li>
-        <li><strong>Terraform Stacks + AI</strong> — HashiCorp's HCP Terraform integrates with AI tools to suggest module configurations and detect drift. Combined with Sentinel policies, it creates a guardrailed IaC workflow.</li>
-        <li><strong>AWS CloudFormation + Bedrock</strong> — Amazon Bedrock's Claude models can be invoked via Lambda to generate and validate CloudFormation templates programmatically — enabling AI-powered self-service infrastructure portals for enterprise platform teams.</li>
-      </ul>
-
-      <h2>Real Pattern: Self-Service Infrastructure Portal</h2>
-      <p>One pattern we've deployed for a large financial institution: a Claude-powered internal portal where developers describe the infrastructure they need ("I need a private ECS cluster with RDS Aurora, behind an ALB, with WAF and VPC endpoints for all AWS services"). The AI generates a validated Terraform plan, runs a <code>terraform plan</code> in a sandbox, surfaces the output for review, and opens a GitHub PR — all without the developer writing a single line of HCL.</p>
-
-      <h2>The Security & Compliance Layer</h2>
-      <p>AI-generated IaC needs guardrails. We integrate three validation layers before any AI-generated code can be merged:</p>
-      <ul>
-        <li><strong>Checkov</strong> — static analysis that scans Terraform and CloudFormation for 1,000+ misconfigurations (open security groups, unencrypted S3 buckets, missing CloudTrail logging)</li>
-        <li><strong>AWS Config Rules</strong> — post-deploy compliance checks that continuously validate deployed infrastructure against your organization's policy baselines</li>
-        <li><strong>OPA/Sentinel policies</strong> — organizational guardrails that prevent specific resource types or configurations from ever reaching production, regardless of what the AI generated</li>
-      </ul>
-
-      <h2>Accuracy & Limitations</h2>
-      <p>AI-generated IaC is impressive but not infallible. It excels at boilerplate — VPCs, security groups, IAM roles, ECS task definitions. It struggles with complex cross-account architectures, AWS Organizations SCPs, and cutting-edge services with limited training data. The winning workflow treats AI as a senior junior engineer: fast, capable on standard patterns, but needing review on complex edge cases.</p>
-
-      <h2>What's Next</h2>
-      <p>The frontier is AI agents that don't just generate IaC but also execute it, monitor the result, and self-heal. AWS is building toward this with Systems Manager Automation integrated with Bedrock. In 12–18 months, we expect the first production deployments of fully autonomous AWS infrastructure agents operating within compliance boundaries — with humans approving changes, not writing them.</p>
-    `
-  },
-  {
-    title: 'AI-Powered Cybersecurity in Banking: Platforms, Patterns & Real Deployments',
-    tags: ['Cybersecurity', 'FinTech'],
-    date: 'March 20, 2025',
-    readTime: '14 min read',
-    author: 'Nayu Technologies',
-    bgColor: '#0C0A14',
-    hasPdf: true,
-    content: `
-      <p>Canada's Big 5 Banks face a cybersecurity threat environment that grows more sophisticated every quarter. Ransomware groups, nation-state actors, and insider threats have made traditional rule-based security tools insufficient. AI-powered security platforms are now a core part of the defence stack at every major Canadian financial institution. Here's what they're deploying, why, and how it works.</p>
-
-      <h2>The Threat Landscape Banks Face</h2>
-      <p>Financial institutions are the most targeted sector globally. The primary threat vectors AI security tools address are: credential-based intrusions (compromised employee accounts used to move laterally), supply chain attacks (malicious code in third-party software updates), insider threats (employees exfiltrating data or conducting fraudulent transactions), and zero-day exploits targeting banking middleware and payment systems.</p>
-
-      <h2>Leading AI Security Platforms in Banking</h2>
-
-      <p><strong>Darktrace — Autonomous Threat Detection</strong><br>
-      Darktrace's Enterprise Immune System uses unsupervised machine learning to build a "pattern of life" model for every user, device, and network flow in your environment. When behaviour deviates from the norm — a service account accessing file shares it's never touched, or a workstation making unusual DNS queries at 3am — Darktrace responds autonomously, throttling connections or enforcing micro-segmentation without waiting for a human analyst. Several Big 5 Banks use Darktrace's Antigena module for autonomous response in their trading and payments networks.</p>
-
-      <p><strong>Microsoft Sentinel — AI-Native SIEM/SOAR</strong><br>
-      Sentinel is the dominant SIEM platform across Canadian banking, largely because of existing Microsoft licensing relationships. Its AI capabilities have matured significantly: UEBA (User and Entity Behaviour Analytics) correlates identity signals across Azure AD, on-premises AD, and SaaS apps. The Fusion engine uses ML to chain low-confidence signals into high-fidelity attack detections that would be invisible to rule-based systems. Copilot for Security, layered on top of Sentinel, lets SOC analysts query incidents in natural language and generates incident summaries and recommended response playbooks automatically.</p>
-
-      <p><strong>CrowdStrike Falcon — AI-Powered EDR & Identity Protection</strong><br>
-      CrowdStrike's Falcon platform is used by most of Canada's major banks for endpoint detection and response. Its AI engine, trained on trillions of events from its global sensor network, detects malicious process behaviour with sub-second response times. Falcon Identity Protection maps lateral movement paths and detects credential abuse in Active Directory — critical for banks where privileged identity compromise is the most common ransomware entry point. The Charlotte AI assistant within Falcon lets analysts triage alerts and hunt threats via natural language.</p>
-
-      <p><strong>Vectra AI — Network Detection & Response</strong><br>
-      Vectra specialises in detecting attacker behaviour inside the network after initial compromise — the phase where traditional tools go blind. Its AI models detect command-and-control communication, lateral movement, and data staging behaviours with extremely low false-positive rates. Banks deploying Vectra typically see it integrated with their SWIFT infrastructure monitoring, flagging anomalous patterns in interbank payment flows that could indicate fraud or system compromise.</p>
-
-      <p><strong>Palo Alto Cortex XSIAM — AI-Driven SOC Platform</strong><br>
-      Cortex XSIAM is Palo Alto's answer to the analyst shortage: an AI-driven platform that aims to automate 80%+ of Tier 1 SOC work. It ingests data from 700+ integrations, applies AI to correlate and prioritise alerts, and executes automated response playbooks. For banks running 24/7 SOC operations, XSIAM significantly reduces mean-time-to-respond (MTTR) and alert fatigue. Its AI models are trained specifically on financial services threat patterns.</p>
-
-      <p><strong>IBM QRadar with Watson AI</strong><br>
-      QRadar remains deployed at several Canadian banks as a legacy SIEM investment. IBM has layered Watson AI capabilities onto QRadar for anomaly detection and alert prioritisation, and its integration with IBM's X-Force Threat Intelligence feed provides context on emerging threats. The newer QRadar SIEM SaaS on AWS is IBM's modernised path for banks migrating from on-premises deployments.</p>
-
-      <h2>Architecture: Layered AI Security in a Bank</h2>
-      <p>No single platform covers every threat vector. The architecture pattern we implement for Canadian banks uses a layered approach:</p>
-      <ul>
-        <li><strong>Perimeter & network</strong> — Palo Alto NGFWs with AI-powered threat prevention + Zscaler Zero Trust Network Access (ZTNA)</li>
-        <li><strong>Endpoint</strong> — CrowdStrike Falcon EDR on all workstations, servers, and cloud workloads</li>
-        <li><strong>Identity</strong> — CrowdStrike Falcon Identity + Microsoft Entra ID Protection for real-time risky sign-in detection</li>
-        <li><strong>Network detection</strong> — Vectra AI or Darktrace for east-west traffic analysis</li>
-        <li><strong>SIEM/SOAR</strong> — Microsoft Sentinel as the central correlation and response hub</li>
-        <li><strong>Threat intelligence</strong> — CrowdStrike Adversary Intelligence + FS-ISAC feeds integrated into Sentinel</li>
-      </ul>
-
-      <h2>The AI Analyst: Copilot for Security</h2>
-      <p>Microsoft Copilot for Security is the most significant development in bank SOC operations in recent years. Analysts can describe an alert in plain English ("what happened on this workstation in the last 6 hours and is it related to the Sentinel incident?") and receive a structured investigation summary that would have taken a Tier 2 analyst 45 minutes to assemble. Early deployments at major banks report 30-40% reductions in mean-time-to-investigate.</p>
-
-      <h2>Regulatory Considerations</h2>
-      <p>Canadian banks deploying AI security tools must satisfy OSFI's B-10 (Technology and Cyber Risk Management) guidelines and ensure AI-generated security decisions have appropriate human oversight for material actions. Every autonomous response action must be logged with the AI's reasoning chain, and models require periodic validation against adversarial test scenarios. AI security tools should be treated as augmentation, not replacement, for human security judgment — at least for the foreseeable regulatory environment.</p>
-    `
-  }
-/* ── Modal open/close ──────────────────────── */
-function openPost(idx) {
-  const p = posts[idx];
-  // Tags
-  document.getElementById('modalTags').innerHTML =
-    p.tags.map(t => `<span class="card-tag">${t}</span>`).join('') +
-    (p.hasPdf ? `<span class="pdf-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8" fill="none" stroke="currentColor" stroke-width="2"/></svg>PDF Available</span>` : '');
-
-  document.getElementById('modalTitle').textContent = p.title;
-  document.getElementById('modalMeta').innerHTML =
-    `<span>${p.date}</span><span>·</span><span>${p.readTime}</span><span>·</span><span>${p.author}</span>`;
-  document.getElementById('modalContent').innerHTML = p.content;
-
-  // PDF bar
-  const pdfEl = document.getElementById('modalPdf');
-  if (p.hasPdf) {
-    pdfEl.innerHTML = `
-      <div class="modal-pdf-bar">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
-        <p><strong>${p.pdfName}</strong> — ${p.pdfDesc}</p>
-        <a class="pdf-download-btn" href="./pdfs/${p.pdfName}" download>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download PDF
-        </a>
-      </div>`;
-  } else {
-    pdfEl.innerHTML = '';
-  }
-
-  // Visual header
-  const vis = document.getElementById('modalVisual');
-  vis.style.background = `linear-gradient(135deg, ${p.gradientA}33 0%, ${p.gradientB}22 100%)`;
-  vis.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-    <svg width="80" height="80" viewBox="0 0 32 32" fill="none" style="opacity:0.25">
-      <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" stroke="${p.gradientA}" stroke-width="1.5" fill="${p.gradientA}22"/>
-      <polygon points="16,7 23,11 23,19 16,23 9,19 9,11" stroke="${p.gradientB}" stroke-width="1" fill="none"/>
-    </svg>
-  </div>`;
-
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-  // Tags
-
-
-function closePost() {
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-// Close on Escape
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closePost();
-});
-</script>
-<!-- Shared components (nav + footer injection + behaviors) -->
   <script src="components.js"></script>
+  <script src="blog-data.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof BLOG_POSTS === "undefined") return;
+
+      const listView = document.getElementById("blogListView");
+      const readerView = document.getElementById("blogReaderView");
+      const readerContent = document.getElementById("readerContent");
+      const backBtn = document.getElementById("backToListBtn");
+      const filterBar = document.getElementById("categoryFilters");
+      const blogGrid = document.getElementById("blogGrid");
+
+      let activeCategory = "All";
+
+      // Build Category Filter Buttons dynamically from blog-data.js
+      const categories = ["All", ...new Set(BLOG_POSTS.map(post => post.category))];
+
+      function renderFilters() {
+        filterBar.innerHTML = categories.map(cat => `
+          <button class="filter-btn ${cat === activeCategory ? 'active' : ''}" data-category="${cat}">
+            ${cat}
+          </button>
+        `).join("");
+
+        filterBar.querySelectorAll(".filter-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            activeCategory = btn.getAttribute("data-category");
+            renderFilters();
+            renderPosts();
+          });
+        });
+      }
+
+      // Render Article Cards
+      function renderPosts() {
+        const filtered = activeCategory === "All"
+          ? BLOG_POSTS
+          : BLOG_POSTS.filter(post => post.category === activeCategory);
+
+        blogGrid.innerHTML = filtered.map(post => `
+          <article class="card article-card" data-id="${post.id}">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 14px;">
+              <span class="tag" style="color: var(--accent-blue); background-color: var(--accent-tint); border-color: #DBEAFE;">
+                ${post.category}
+              </span>
+              <span style="font-size: 0.82rem; color: var(--text-muted);">${post.readTime}</span>
+            </div>
+
+            <h3>${post.title}</h3>
+            <p>${post.summary}</p>
+
+            <div class="tag-list" style="margin-bottom: 18px;">
+              ${post.tags.map(t => `<span class="tag">${t}</span>`).join("")}
+            </div>
+
+            <div style="font-size: 0.9rem; font-weight: 600; color: var(--accent-navy);">
+              Read Article &rarr;
+            </div>
+          </article>
+        `).join("");
+
+        blogGrid.querySelectorAll(".article-card").forEach(card => {
+          card.addEventListener("click", () => {
+            const postId = card.getAttribute("data-id");
+            openArticle(postId);
+          });
+        });
+      }
+
+      // Open Single Article View
+      function openArticle(id) {
+        const post = BLOG_POSTS.find(p => p.id === id);
+        if (!post) return;
+
+        readerContent.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <span class="tag" style="color: var(--accent-blue); background-color: var(--accent-tint); border-color: #DBEAFE;">
+              ${post.category}
+            </span>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">${post.readTime}</span>
+          </div>
+
+          <h1 style="font-size: clamp(1.75rem, 3vw, 2.35rem); margin-bottom: 16px;">${post.title}</h1>
+          <p class="lead" style="margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border-light);">
+            ${post.summary}
+          </p>
+
+          <div class="reader-body">
+            ${post.content}
+          </div>
+
+          <div class="tag-list" style="margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border-light);">
+            ${post.tags.map(t => `<span class="tag">${t}</span>`).join("")}
+          </div>
+        `;
+
+        listView.style.display = "none";
+        readerView.style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      backBtn.addEventListener("click", () => {
+        readerView.style.display = "none";
+        listView.style.display = "block";
+      });
+
+      renderFilters();
+      renderPosts();
+    });
+  </script>
 </body>
 </html>

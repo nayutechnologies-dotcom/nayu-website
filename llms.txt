@@ -1,19 +1,29 @@
-# Nayu Technologies
+# Nayu Technologies Inc.
+> Canadian IT Consulting, Staff Augmentation, Contract Resource Management, and Payroll Administration Partner.
 
-> Nayu Technologies empowers enterprises with intelligent automation, generative AI, and IT services. We specialize in digital transformation for Fortune 500 companies and Canada's Big 5 banks.
+## Overview
+Nayu Technologies Inc. is an Ontario-based IT consulting and workforce solutions company serving organizations across Canada and North America. We combine practitioner-led technical screening with end-to-end contract resource management and compliant Canadian payroll administration.
 
-## Core Expertise
-- [Generative AI Consulting](https://nayutechnologies.com): Implementation strategies for LLMs and autonomous agents in financial services.
-- [Intelligent Automation](https://nayutechnologies.com): Streamlining enterprise workflows using AI-driven process automation.
-- [IT Services](https://nayutechnologies.com): High-scale infrastructure and modern IT solutions for regulated industries.
+## Core Services
+- **IT Staff Augmentation & Sourcing:** Contract, contract-to-hire, and direct placement for Cloud Architects, Software Engineers, DevOps/SREs, Data/AI Specialists, and Agile Delivery Leaders—technically vetted against real enterprise engineering standards.
+- **Contract Resource Management:** Full contingent workforce lifecycle management including onboarding, NDAs, compliance verification, timesheet governance, and consultant retention support.
+- **Payroll & Contractor Administration:** Compliant Canadian payrolling for T4 and incorporated (Corp-to-Corp) IT contractors, statutory deductions, and consolidated client invoicing.
 
-## Targeted Industries
-- **Banking & Finance:** Specialized solutions for Canada's Big 5 banks.
-- **Enterprise:** Scalable IT and AI integration for Fortune 500 organizations.
+## Practice Areas
+- Cloud, Infrastructure & DevOps (AWS, Azure, Kubernetes, OpenShift, Terraform, CI/CD)
+- Application, API & Core Engineering (Java/Spring Boot, .NET, Python, Node.js, Kong/Apigee, Microservices, Kafka)
+- Enterprise AI, Data & Automation (Applied AI/ML, LLM & RAG Development, Data Engineering, SQL/NoSQL)
+- Agile Delivery, QA & Domain Specialists (Technical Project Managers, Scrum Masters, Business Systems Analysts, QA Automation, Banking & Insurance Consultants)
 
-## Contact & Engagement
-- [Book a Consultation](https://nayutechnologies.com): Schedule a free strategic session for AI and automation.
-- [About Nayu](https://nayutechnologies.com): Our mission, leadership, and experience in the Canadian financial sector.
+## Leadership
+- Deepak Kaushik — Founder & Managing Director (Ontario, Canada)
+- 16+ years of enterprise architecture and IT delivery leadership across Canada, the UAE, the Netherlands, the United States, and India
+- AWS Certified Solutions Architect – Professional & AWS Certified DevOps Engineer – Professional
+- Microsoft Certified: Azure Solutions Architect Expert
+- TOGAF 9.2 Certified & ArchiMate Practitioner, Scrum Alliance CSP-SM, ITIL v3
 
-## Optional Reference
-- [Technical Blog](https://nayutechnologies.com): Latest insights on AI trends and automation case studies.
+## Contact
+- Website: https://nayutechnologies.com
+- Email: Deepakcanada86@gmail.com
+- Phone: +1 (647) 889-6266
+- LinkedIn: https://linkedin.com

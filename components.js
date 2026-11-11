@@ -1,194 +1,106 @@
-/**
- * components.js — Nayu Technologies
- *
- * Injects the shared nav and footer into every page at runtime,
- * then wires up all common interactive behaviours:
- *   • Active nav-link highlighting based on current page
- *   • Mobile hamburger menu
- *   • Intersection-observer scroll animations (.fade-up)
- *   • Sector-tab switching (index page)
- */
+(function renderLayout() {
+  function init() {
+    const rawPath = window.location.pathname || "";
+    const fileName = rawPath.substring(rawPath.lastIndexOf("/") + 1) || "index.html";
 
-/* ─── 1. SHARED HTML TEMPLATES ─── */
+    const headerHTML = `
+      <header class="navbar">
+        <div class="container nav-inner">
+          <a href="index.html" class="brand">
+            <span class="brand-mark">N</span>
+            <span>Nayu Technologies</span>
+          </a>
 
-const NAV_HTML = `
-<nav id="site-nav" aria-label="Main navigation">
-  <a class="nav-logo" href="./index.html">
-    <div class="nav-logo-mark">N</div>
-    NayuTech
-  </a>
+          <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation" aria-expanded="false">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
 
-  <ul class="nav-links" role="list">
-    <li><a href="./index.html#services"  data-page="index">Services</a></li>
-    <li><a href="./index.html#training"  data-page="index">AI Training</a></li>
-    <li><a href="./index.html#sectors"   data-page="index">Sectors</a></li>
-    <li><a href="./about.html"           data-page="about">About</a></li>
-    <li><a href="./blog.html"            data-page="blog">Insights</a></li>
-  </ul>
+          <nav class="nav-links" id="navLinks">
+            <a href="index.html" class="${fileName === 'index.html' ? 'active' : ''}">Home</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#domains">Practice Areas</a>
+            <a href="about.html" class="${fileName === 'about.html' ? 'active' : ''}">About Us</a>
+            <a href="blog.html" class="${fileName === 'blog.html' ? 'active' : ''}">Insights</a>
+            <a href="contact.html" class="btn btn-primary btn-sm" style="color: #FFFFFF;">Partner With Us</a>
+          </nav>
+        </div>
+      </header>
+    `;
 
-  <a class="btn btn-primary" href="./contact.html">Get Started →</a>
+    const footerHTML = `
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <div class="brand" style="margin-bottom: 10px;">
+                <span class="brand-mark">N</span>
+                <span>Nayu Technologies Inc.</span>
+              </div>
+              <p style="max-width: 380px; color: var(--text-secondary);">
+                Canadian IT Consulting, Staff Augmentation, Contract Resource Management, and Payroll Administration Partner.
+              </p>
+            </div>
 
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+            <div>
+              <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 10px;">Company</div>
+              <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="about.html">About Us</a>
+                <a href="blog.html">Insights</a>
+                <a href="contact.html">Contact</a>
+              </div>
+            </div>
 
-<!-- Mobile overlay menu -->
-<ul class="mobile-menu" id="mobile-menu" role="list" aria-label="Mobile navigation" aria-hidden="true">
-  <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">✕</button>
-  <li><a href="./index.html#services">Services</a></li>
-  <li><a href="./index.html#training">AI Training</a></li>
-  <li><a href="./index.html#sectors">Sectors</a></li>
-  <li><a href="./about.html">About</a></li>
-  <li><a href="./blog.html">Insights</a></li>
-  <li><a href="./contact.html" class="btn btn-primary" style="margin-top:1rem;">Get Started →</a></li>
-</ul>
-`;
+            <div>
+              <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 10px;">Contact</div>
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <a href="mailto:Deepakcanada86@gmail.com">Deepakcanada86@gmail.com</a>
+                <a href="tel:+16478896266">+1 (647) 889-6266</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              </div>
+            </div>
+          </div>
 
-const FOOTER_HTML = `
-<footer id="site-footer">
-  <div class="footer-inner">
-    <div>
-      <a class="nav-logo" href="./index.html" style="display:inline-flex; margin-bottom:0.25rem;">
-        <div class="nav-logo-mark">N</div>
-        NayuTech
-      </a>
-      <p class="footer-desc">
-        Nayu Technologies Inc. is an AI &amp; automation consulting firm helping enterprises
-        in financial services and beyond harness the power of intelligent technology.
-        Toronto, Ontario, Canada.
-      </p>
-    </div>
+          <div class="footer-bottom">
+            <span>&copy; ${new Date().getFullYear()} Nayu Technologies Inc. All rights reserved.</span>
+            <span>Ontario, Canada &bull; Serving North America</span>
+          </div>
+        </div>
+      </footer>
+    `;
 
-    <div class="footer-col">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="./index.html#services">Generative AI</a></li>
-        <li><a href="./index.html#services">Intelligent Automation</a></li>
-        <li><a href="./index.html#services">Digital Transformation</a></li>
-        <li><a href="./index.html#services">Cloud &amp; Security</a></li>
-        <li><a href="./index.html#services">Contact Center AI</a></li>
-      </ul>
-    </div>
+    const headerMount = document.getElementById("site-header");
+    const footerMount = document.getElementById("site-footer");
 
-    <div class="footer-col">
-      <h4>AI Training</h4>
-      <ul>
-        <li><a href="./index.html#training">AI Literacy</a></li>
-        <li><a href="./index.html#training">GenAI for Business</a></li>
-        <li><a href="./index.html#training">LLM Engineering</a></li>
-        <li><a href="./index.html#training">Agentic AI</a></li>
-        <li><a href="./index.html#training">Executive Strategy</a></li>
-      </ul>
-    </div>
+    if (headerMount) headerMount.innerHTML = headerHTML;
+    if (footerMount) footerMount.innerHTML = footerHTML;
 
-    <div class="footer-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="./about.html">About Us</a></li>
-        <li><a href="./blog.html">Blog</a></li>
-        <li><a href="./contact.html">Careers</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
+    const mobileBtn = document.getElementById("mobileMenuBtn");
+    const navLinks = document.getElementById("navLinks");
 
-  <div class="footer-bottom">
-    <span>© 2026 Nayu Technologies Inc. All rights reserved.</span>
-    <div class="footer-socials">
-      <a href="https://www.linkedin.com/company/nayutech" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="./contact.html">Contact</a>
-    </div>
-  </div>
-</footer>
-`;
+    if (mobileBtn && navLinks) {
+      mobileBtn.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("open");
+        mobileBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
 
-/* ─── 2. INJECT NAV + FOOTER ─── */
-(function injectComponents() {
-  document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
-  const existingFooter = document.getElementById('footer-placeholder');
-  if (existingFooter) {
-    existingFooter.outerHTML = FOOTER_HTML;
-  } else {
-    document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
-  }
-})();
-
-/* ─── 3. ACTIVE NAV LINK ─── */
-(function setActiveLink() {
-  const path = window.location.pathname;
-  const pageMap = {
-    'about.html': 'about',
-    'blog.html':  'blog',
-    'contact.html': 'contact',
-  };
-
-  const filename = path.split('/').pop() || 'index.html';
-  const currentPage = pageMap[filename] || 'index';
-
-  document.querySelectorAll('.nav-links a[data-page]').forEach(link => {
-    if (link.dataset.page === currentPage) {
-      link.classList.add('active');
-      link.setAttribute('aria-current', 'page');
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          mobileBtn.setAttribute("aria-expanded", "false");
+        });
+      });
     }
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();
-
-/* ─── 4. MOBILE MENU ─── */
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburger   = document.getElementById('nav-hamburger');
-  const mobileMenu  = document.getElementById('mobile-menu');
-  const closeBtn    = document.getElementById('mobile-menu-close');
-
-  if (!hamburger || !mobileMenu) return;
-
-  function openMenu() {
-    mobileMenu.classList.add('open');
-    mobileMenu.setAttribute('aria-hidden', 'false');
-    hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMenu() {
-    mobileMenu.classList.remove('open');
-    mobileMenu.setAttribute('aria-hidden', 'true');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  hamburger.addEventListener('click', openMenu);
-  closeBtn?.addEventListener('click', closeMenu);
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
-});
-
-/* ─── 5. SCROLL FADE-UP ANIMATION ─── */
-document.addEventListener('DOMContentLoaded', () => {
-  const observer = new IntersectionObserver(
-    entries => entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    }),
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-  );
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-});
-
-/* ─── 6. SECTOR TABS (index page only) ─── */
-document.addEventListener('DOMContentLoaded', () => {
-  const tabs = document.querySelectorAll('.sector-tab');
-  if (!tabs.length) return;
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const sector = tab.dataset.sector;
-      document.querySelectorAll('.sector-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      document.querySelectorAll('.sector-content').forEach(c => c.classList.remove('active'));
-      const panel = document.getElementById(`sector-${sector}`);
-      if (panel) panel.classList.add('active');
-    });
-  });
-});
