@@ -5,7 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us — Nayu Technologies Inc.</title>
   <meta name="description" content="About Nayu Technologies Inc., a Canadian IT consulting, staff augmentation, contract resource management, and payroll partner." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1E3A8A" />
+  <link rel="canonical" href="https://nayutechnologies.com/about.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:site_name" content="Nayu Technologies Inc." />
+  <meta property="og:title" content="About Us — Nayu Technologies Inc." />
+  <meta property="og:description" content="About Nayu Technologies Inc., a Canadian IT consulting, staff augmentation, contract resource management, and payroll partner." />
+  <meta property="og:url" content="https://nayutechnologies.com/about.html" />
+  <meta property="og:image" content="https://nayutechnologies.com/Deepak-photograph.jpg" />
+  <meta property="og:locale" content="en_CA" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Us — Nayu Technologies Inc." />
+  <meta name="twitter:description" content="About Nayu Technologies Inc., a Canadian IT consulting, staff augmentation, contract resource management, and payroll partner." />
+  <meta name="twitter:image" content="https://nayutechnologies.com/Deepak-photograph.jpg" />
+
+  <link rel="stylesheet" href="styles.css?v=2" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Deepak Kaushik",
+    "jobTitle": "Founder & Managing Director",
+    "image": "https://nayutechnologies.com/Deepak-photograph.jpg",
+    "url": "https://nayutechnologies.com/about.html",
+    "sameAs": ["https://ca.linkedin.com/in/deepakkaushik86"],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Nayu Technologies Inc.",
+      "url": "https://nayutechnologies.com/"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Ontario",
+      "addressCountry": "CA"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -63,11 +103,13 @@
         <div class="about-split">
           <!-- Left Card: Managing Director -->
           <aside class="founder-card">
-            <div class="photo-placeholder">
-              <!-- To add your photo later: <img src="assets/deepak.jpg" alt="Deepak Kaushik" style="width:100%; height:100%; object-fit:cover;" /> -->
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 8px; color: var(--text-muted);"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              <span>Leadership Photo<br><small>(Optional: assets/deepak.jpg)</small></span>
-            </div>
+            <img
+              src="Deepak-photograph.jpg"
+              alt="Deepak Kaushik, Founder and Managing Director of Nayu Technologies Inc."
+              width="410"
+              height="457"
+              class="founder-photo"
+            />
 
             <h3 style="margin-bottom: 2px;">Deepak Kaushik</h3>
             <div style="font-size: 0.9rem; color: var(--accent-blue); font-weight: 600; margin-bottom: 12px;">
@@ -78,7 +120,7 @@
               B.Eng. Electronics &amp; Communication
             </p>
 
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="width: 100%;">
+            <a href="https://ca.linkedin.com/in/deepakkaushik86" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="width: 100%;">
               LinkedIn Profile
             </a>
 
@@ -132,6 +174,6 @@
 
   <!-- Centralized Footer injected by components.js -->
   <div id="site-footer"></div>
-  <script src="components.js"></script>
+  <script src="components.js?v=3"></script>
 </body>
 </html>

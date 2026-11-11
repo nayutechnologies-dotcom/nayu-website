@@ -11,8 +11,8 @@
             <span>Nayu Technologies</span>
           </a>
 
-          <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation" aria-expanded="false">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -59,9 +59,9 @@
             <div>
               <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 10px;">Contact</div>
               <div style="display: flex; flex-direction: column; gap: 6px;">
-                <a href="mailto:Deepakcanada86@gmail.com">Deepakcanada86@gmail.com</a>
+                <a href="mailto:services@nayutechnologies.com">services@nayutechnologies.com</a>
                 <a href="tel:+16478896266">+1 (647) 889-6266</a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://ca.linkedin.com/in/deepakkaushik86" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </div>
             </div>
           </div>

@@ -5,7 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Technical Insights &amp; Architecture Notes — Nayu Technologies Inc.</title>
   <meta name="description" content="Implementation guides and architecture notes on Enterprise AI, RAG systems, Agentic Workflows, Cloud Migration, and API Modernization from Nayu Technologies Inc." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1E3A8A" />
+  <link rel="canonical" id="canonicalLink" href="https://nayutechnologies.com/blog.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nayu Technologies Inc." />
+  <meta property="og:title" content="Technical Insights &amp; Architecture Notes — Nayu Technologies Inc." />
+  <meta property="og:description" content="Implementation guides and architecture notes on Enterprise AI, RAG systems, Agentic Workflows, Cloud Migration, and API Modernization from Nayu Technologies Inc." />
+  <meta property="og:url" content="https://nayutechnologies.com/blog.html" />
+  <meta property="og:image" content="https://nayutechnologies.com/Deepak-photograph.jpg" />
+  <meta property="og:locale" content="en_CA" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Technical Insights &amp; Architecture Notes — Nayu Technologies Inc." />
+  <meta name="twitter:description" content="Implementation guides and architecture notes on Enterprise AI, RAG systems, Agentic Workflows, Cloud Migration, and API Modernization from Nayu Technologies Inc." />
+  <meta name="twitter:image" content="https://nayutechnologies.com/Deepak-photograph.jpg" />
+
+  <link rel="stylesheet" href="styles.css?v=2" />
   <style>
     .filter-bar {
       display: flex;
@@ -119,7 +137,7 @@
   <!-- Centralized Footer injected by components.js -->
   <div id="site-footer"></div>
 
-  <script src="components.js"></script>
+  <script src="components.js?v=3"></script>
   <script src="blog-data.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -131,6 +149,12 @@
       const backBtn = document.getElementById("backToListBtn");
       const filterBar = document.getElementById("categoryFilters");
       const blogGrid = document.getElementById("blogGrid");
+      const metaDescriptionEl = document.querySelector('meta[name="description"]');
+      const canonicalEl = document.getElementById("canonicalLink");
+
+      const DEFAULT_TITLE = document.title;
+      const DEFAULT_DESCRIPTION = metaDescriptionEl ? metaDescriptionEl.getAttribute("content") : "";
+      const DEFAULT_CANONICAL = canonicalEl ? canonicalEl.getAttribute("href") : "https://nayutechnologies.com/blog.html";
 
       let activeCategory = "All";
 
@@ -189,10 +213,23 @@
         });
       }
 
+      // Show the article grid and restore default page metadata
+      function showList(updateHistory) {
+        readerView.style.display = "none";
+        listView.style.display = "block";
+        document.title = DEFAULT_TITLE;
+        if (metaDescriptionEl) metaDescriptionEl.setAttribute("content", DEFAULT_DESCRIPTION);
+        if (canonicalEl) canonicalEl.setAttribute("href", DEFAULT_CANONICAL);
+        if (updateHistory) history.pushState({}, "", "blog.html");
+      }
+
       // Open Single Article View
-      function openArticle(id) {
+      function openArticle(id, options = {}) {
         const post = BLOG_POSTS.find(p => p.id === id);
-        if (!post) return;
+        if (!post) {
+          showList(false);
+          return;
+        }
 
         readerContent.innerHTML = `
           <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
@@ -218,16 +255,64 @@
 
         listView.style.display = "none";
         readerView.style.display = "block";
-        window.scrollTo({ top: 0, behavior: "smooth" });
+
+        document.title = `${post.title} — Nayu Technologies Inc.`;
+        if (metaDescriptionEl) metaDescriptionEl.setAttribute("content", post.summary);
+        if (canonicalEl) canonicalEl.setAttribute("href", `https://nayutechnologies.com/blog.html?post=${post.id}`);
+
+        if (options.updateHistory !== false) {
+          const url = `blog.html?post=${post.id}`;
+          if (options.replace) history.replaceState({ postId: id }, "", url);
+          else history.pushState({ postId: id }, "", url);
+        }
+
+        if (options.scroll !== false) window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
-      backBtn.addEventListener("click", () => {
-        readerView.style.display = "none";
-        listView.style.display = "block";
+      // Structured data so search engines understand each article even
+      // though they all live under the same blog.html URL
+      function injectBlogSchema() {
+        const schema = {
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "name": "Nayu Technologies Insights",
+          "url": "https://nayutechnologies.com/blog.html",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Nayu Technologies Inc.",
+            "url": "https://nayutechnologies.com/"
+          },
+          "blogPost": BLOG_POSTS.map(post => ({
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "description": post.summary,
+            "url": `https://nayutechnologies.com/blog.html?post=${post.id}`,
+            "keywords": post.tags.join(", "),
+            "articleSection": post.category
+          }))
+        };
+        const schemaScript = document.createElement("script");
+        schemaScript.type = "application/ld+json";
+        schemaScript.textContent = JSON.stringify(schema);
+        document.head.appendChild(schemaScript);
+      }
+
+      backBtn.addEventListener("click", () => showList(true));
+
+      // Keep the back/forward browser buttons in sync with the article view
+      window.addEventListener("popstate", () => {
+        const id = new URLSearchParams(location.search).get("post");
+        if (id) openArticle(id, { updateHistory: false, scroll: false });
+        else showList(false);
       });
 
       renderFilters();
       renderPosts();
+      injectBlogSchema();
+
+      // Deep-link support: open directly to an article via ?post=<id>
+      const initialPostId = new URLSearchParams(location.search).get("post");
+      if (initialPostId) openArticle(initialPostId, { replace: true, scroll: false });
     });
   </script>
 </body>
