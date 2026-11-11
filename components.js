@@ -7,7 +7,7 @@
       <header class="navbar">
         <div class="container nav-inner">
           <a href="index.html" class="brand">
-            <span class="brand-mark">N</span>
+            <img src="logo.svg" alt="Nayu Technologies Inc." class="brand-mark" width="32" height="32" />
             <span>Nayu Technologies</span>
           </a>
 
@@ -37,7 +37,7 @@
           <div class="footer-grid">
             <div>
               <div class="brand" style="margin-bottom: 10px;">
-                <span class="brand-mark">N</span>
+                <img src="logo.svg" alt="Nayu Technologies Inc." class="brand-mark" width="32" height="32" />
                 <span>Nayu Technologies Inc.</span>
               </div>
               <p style="max-width: 380px; color: var(--text-secondary);">
